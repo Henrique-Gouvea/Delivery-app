@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import CadasterContext from './CadasterContext';
 
 function CadasterProvider({ children }) {
@@ -11,7 +11,8 @@ function CadasterProvider({ children }) {
 
   }, [nameLogin, passwordLogin]);
 
-  const stateValue = useMemo(() => ({
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const stateValue = {
     nameLogin,
     setNameLogin,
     passwordLogin,
@@ -22,7 +23,7 @@ function CadasterProvider({ children }) {
     setEmailCadaster,
     passwordCadaster,
     setPasswordCadaster,
-  }), []);
+  };
 
   return (
     <CadasterContext.Provider value={ stateValue }>
