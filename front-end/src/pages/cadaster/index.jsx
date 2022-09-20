@@ -2,14 +2,20 @@ import React from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import CadasterContext from '../../context/CadasterContext';
 
-function Login() {
+function Cadaster() {
   return (
     <div>
-      <h1>Logotipo</h1>
+      <h1>Cadastro</h1>
       <div>
         <form>
           <div>
-            <p>Login</p>
+            <p>Nome</p>
+            <input
+              name="name"
+              type="text"
+              placeholder="Nome"
+            />
+            <p>Email</p>
             <input
               name="login"
               type="text"
@@ -27,12 +33,7 @@ function Login() {
             <button
               type="submit"
             >
-              LOGIN
-            </button>
-            <button
-              type="submit"
-            >
-              Ainda não tenho conta
+              CADASTRAR
             </button>
           </div>
           <p>Mensagem de erro</p>
@@ -42,4 +43,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Cadaster;
