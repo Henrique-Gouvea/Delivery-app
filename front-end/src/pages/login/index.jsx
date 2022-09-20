@@ -1,8 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 // import { useNavigate } from 'react-router-dom';
 // import CadasterContext from '../../context/CadasterContext';
 
 function Login() {
+  const navigate = useNavigate();
+
+  const noAccountBtn = () => {
+    navigate('/register');
+  };
+
   return (
     <div>
       <h1>Logotipo</h1>
@@ -31,6 +38,7 @@ function Login() {
             </button>
             <button
               type="submit"
+              onClick={ noAccountBtn }
             >
               Ainda não tenho conta
             </button>
