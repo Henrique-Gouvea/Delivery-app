@@ -21,29 +21,33 @@ function Login() {
               name="login"
               type="text"
               placeholder="email@tryber.com.br"
+              data-testid="common_login__input-email"
             />
             <p>Senha</p>
             <input
               name="senha"
               type="text"
               placeholder="senha"
+              data-testid="common_login__input-password"
             />
 
           </div>
           <div>
             <button
               type="submit"
+              data-testid="common_login__button-login"
             >
               LOGIN
             </button>
             <button
               type="submit"
               onClick={ noAccountBtn }
+              data-testid="common_login__button-register"
             >
               Ainda não tenho conta
             </button>
           </div>
-          <p>Mensagem de erro</p>
+          <p data-testid="common_login__element-invalid-email">Mensagem de erro</p>
         </form>
       </div>
     </div>
