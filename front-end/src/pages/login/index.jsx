@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
-// import CadasterContext from '../../context/CadasterContext';
+import CadasterContext from '../../context/CadasterContext';
 
 function Login() {
+  const {
+    nameLogin,
+    setNameLogin,
+    passwordLogin,
+    setPasswordLogin,
+  } = useContext(CadasterContext);
   const navigate = useNavigate();
 
   const noAccountBtn = () => {
@@ -22,6 +27,10 @@ function Login() {
               type="text"
               placeholder="email@tryber.com.br"
               data-testid="common_login__input-email"
+              onChange={ (ele) => setNameLogin(
+                ele.target.value,
+              ) }
+              value={ nameLogin }
             />
             <p>Senha</p>
             <input
@@ -29,6 +38,10 @@ function Login() {
               type="text"
               placeholder="senha"
               data-testid="common_login__input-password"
+              onChange={ (ele) => setPasswordLogin(
+                ele.target.value,
+              ) }
+              value={ passwordLogin }
             />
 
           </div>

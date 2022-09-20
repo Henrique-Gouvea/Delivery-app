@@ -4,16 +4,16 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './App';
-// import CadasterProvider from './context/CadasterProvider'
+import CadasterProvider from './context/CadasterProvider'
 
 ReactDOM.render(
-  // <CadasterProvider>
+  <CadasterProvider>
     <BrowserRouter>
       <React.StrictMode>
         <App />
       </React.StrictMode>
     </BrowserRouter>,
-  // </CadasterProvider>,
+  </CadasterProvider>,
   document.getElementById('root'),
 );
 

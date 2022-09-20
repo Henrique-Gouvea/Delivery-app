@@ -1,8 +1,17 @@
 import React from 'react';
 // import { useNavigate } from 'react-router-dom';
-// import CadasterContext from '../../context/CadasterContext';
+import CadasterContext from '../../context/CadasterContext';
 
 function Cadaster() {
+  const {
+    nameCadaster,
+    setNameCadaster,
+    emailCadaster,
+    setEmailCadaster,
+    passwordCadaster,
+    setPasswordCadaster,
+  } = useContext(CadasterContext);
+
   return (
     <div>
       <h1>Cadastro</h1>
@@ -15,6 +24,10 @@ function Cadaster() {
               type="text"
               placeholder="Nome"
               data-testid="common_register__input-name"
+              onChange={ (ele) => setNameCadaster(
+                ele.target.value,
+              ) }
+              value={ nameCadaster }
             />
             <p>Email</p>
             <input
@@ -22,6 +35,10 @@ function Cadaster() {
               type="text"
               placeholder="email@tryber.com.br"
               data-testid="common_register__input-email"
+              onChange={ (ele) => setEmailCadaster(
+                ele.target.value,
+              ) }
+              value={ emailCadaster }
             />
             <p>Senha</p>
             <input
@@ -29,6 +46,10 @@ function Cadaster() {
               type="text"
               placeholder="senha"
               data-testid="common_register__input-password"
+              onChange={ (ele) => setPasswordCadaster(
+                ele.target.value,
+              ) }
+              value={ passwordCadaster }
             />
 
           </div>
