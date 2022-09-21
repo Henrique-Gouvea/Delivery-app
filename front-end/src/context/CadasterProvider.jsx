@@ -56,7 +56,17 @@ function CadasterProvider({ children }) {
     setBtnDisabledLogin,
     btnDisabledCadaster,
     setBtnDisabledCadaster,
-  }), [nameLogin, passwordLogin, nameCadaster, emailCadaster, passwordCadaster]);
+  }), [
+    nameLogin,
+    passwordLogin,
+    nameCadaster,
+    emailCadaster,
+    passwordCadaster,
+    errorLogin,
+    errorCadaster,
+    btnDisabledLogin,
+    btnDisabledCadaster,
+  ]);
 
   return (
     <CadasterContext.Provider value={ stateValue }>
