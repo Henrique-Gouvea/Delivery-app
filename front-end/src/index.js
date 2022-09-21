@@ -12,7 +12,7 @@ ReactDOM.render(
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </BrowserRouter>,
+    </BrowserRouter>
   </CadasterProvider>,
   document.getElementById('root'),
 );

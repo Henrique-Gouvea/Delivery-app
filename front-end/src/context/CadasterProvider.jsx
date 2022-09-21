@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import CadasterContext from './CadasterContext';
-import validationEmail from '../helpers/validationEmail';
+// import validationEmail from '../helpers/validationEmail';
 
 function CadasterProvider({ children }) {
   const [nameLogin, setNameLogin] = useState('');
@@ -15,25 +15,27 @@ function CadasterProvider({ children }) {
   const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
   const [btnDisabledCadaster, setBtnDisabledCadaster] = useState(true);
 
-  const MIN_LENGTH_PASSWORD = 5;
-  const MAX_LENGTH_NAME = 12;
+  // const MIN_LENGTH_PASSWORD = 4;
+  // const MAX_LENGTH_NAME = 12;
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   console.log(passwordCadaster.length);
+  //   console.log(passwordCadaster.length > MIN_LENGTH_PASSWORD);
+  //   if ((passwordCadaster.length > MIN_LENGTH_PASSWORD)
+  //   && (validationEmail(emailCadaster)) && (nameCadaster.length < MAX_LENGTH_NAME)) {
+  //     setBtnDisabledCadaster(false);
+  //   } else setBtnDisabledCadaster(true);
+  // }, [emailCadaster, passwordCadaster, nameCadaster, btnDisabledCadaster]);
 
-  }, [emailCadaster, passwordCadaster, nameCadaster]);
-
-  useEffect(() => {
-    if ((passwordCadaster.length > MIN_LENGTH_PASSWORD)
-    && validationEmail(emailCadaster) && nameCadaster < MAX_LENGTH_NAME) {
-      setBtnDisabledLogin(false);
-    } else setBtnDisabledLogin(true);
-  }, [emailCadaster, passwordCadaster, nameCadaster]);
-
-  useEffect(() => {
-    if ((passwordLogin.length > MIN_LENGTH_PASSWORD) && validationEmail(nameLogin)) {
-      setBtnDisabledLogin(false);
-    } else setBtnDisabledLogin(true);
-  }, [nameLogin, passwordLogin]);
+  // useEffect(() => {
+  //   console.log(passwordLogin);
+  //   console.log(passwordLogin.length > MIN_LENGTH_PASSWORD);
+  //   if ((passwordLogin.length > MIN_LENGTH_PASSWORD) && (validationEmail(nameLogin))) {
+  //     setBtnDisabledLogin(false);
+  //   } else {
+  //     setBtnDisabledLogin(true);
+  //   }
+  // }, [nameLogin, passwordLogin]);
 
   const stateValue = useMemo(() => ({
     nameLogin,
@@ -54,7 +56,17 @@ function CadasterProvider({ children }) {
     setBtnDisabledLogin,
     btnDisabledCadaster,
     setBtnDisabledCadaster,
-  }), [nameLogin, passwordLogin, nameCadaster, emailCadaster, passwordCadaster]);
+  }), [
+    nameLogin,
+    passwordLogin,
+    nameCadaster,
+    emailCadaster,
+    passwordCadaster,
+    errorLogin,
+    errorCadaster,
+    btnDisabledLogin,
+    btnDisabledCadaster,
+  ]);
 
   return (
     <CadasterContext.Provider value={ stateValue }>
