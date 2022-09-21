@@ -1,10 +1,10 @@
 const loginService = require("../services/loginService");
-import { StatusCodes } from "http-status-codes";
+const { StatusCodes } = require('http-status-codes');
 
 const createToken = async (req, res, next) => {
   const { email, password } = req.body;
 
-  const user = await loginService.createToken({ email, password });
+  const user = await loginService.createNewToken({ email, password });
 
   if (user.error) return next(user.error);
 

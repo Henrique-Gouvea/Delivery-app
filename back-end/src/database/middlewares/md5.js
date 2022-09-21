@@ -1,6 +1,6 @@
 const md5 = require("md5");
 const sendError = require("./sendError");
-import { StatusCodes } from "http-status-codes";
+const { StatusCodes } = require('http-status-codes');
 
 const encriptPassword = (password) => {
   const passwordHash = md5(password);

@@ -1,10 +1,11 @@
 const { User } = require("../models");
-import { StatusCodes } from 'http-status-codes';
+const { StatusCodes } = require('http-status-codes');
 const { encriptPassword } = require("../middlewares/createToken");
 const { createToken } = require("../middlewares/createToken");
+const Joi = require('joi');
 
 const userSchema = Joi.object({
-  name: Joi.string().require,
+  name: Joi.string().required,
   email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
