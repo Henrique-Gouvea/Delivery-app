@@ -10,7 +10,7 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-const createToken = async (email, password) => {
+const createToken = async ({ email, password }) => {
   console.log("loginService, createToken");
 
   const { error } = loginSchema.validate({ email, password });
@@ -18,8 +18,8 @@ const createToken = async (email, password) => {
 
   const user = await User.findOne({ where: { email } });
 
-  if (!user || user.password !== password) {
-    return sendError(StatusCodes.BAD_REQUEST, "Invalid fields");
+  if (!user) { // || user.password !== password)
+    return sendError(StatusCodes.NOT_FOUND, "Not found");
   }
 
   verifyPassword(password, user.password);
