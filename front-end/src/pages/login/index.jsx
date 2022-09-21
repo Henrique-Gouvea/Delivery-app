@@ -11,6 +11,7 @@ function Login() {
     setPasswordLogin,
     errorLogin,
     setErrorLogin,
+    btnDisabledLogin,
   } = useContext(CadasterContext);
   const navigate = useNavigate();
 
@@ -66,6 +67,7 @@ function Login() {
             <button
               type="submit"
               data-testid="common_login__button-login"
+              disabled={ btnDisabledLogin }
               onClick={ clickSubmitLogin }
             >
               LOGIN

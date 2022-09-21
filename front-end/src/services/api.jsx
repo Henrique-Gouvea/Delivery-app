@@ -11,5 +11,7 @@ const request = async (resource, method, body) => {
   } catch (err) { return (err.response.data); }
 };
 
-export default apiRequestLogin = async (user) => (
+const apiRequestLogin = async (user) => (
   request('/login', 'post', user));
+
+export default apiRequestLogin;

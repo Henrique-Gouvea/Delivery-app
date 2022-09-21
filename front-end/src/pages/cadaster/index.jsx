@@ -12,6 +12,7 @@ function Cadaster() {
     setPasswordCadaster,
     errorCadaster,
     setErrorCadaster,
+    btnDisabledCadaster,
   } = useContext(CadasterContext);
 
   const clickSubmitCadaster = (event) => {
@@ -74,6 +75,7 @@ function Cadaster() {
               type="submit"
               data-testid="common_register__button-register"
               onClick={ clickSubmitCadaster }
+              disabled={ btnDisabledCadaster }
             >
               CADASTRAR
             </button>
