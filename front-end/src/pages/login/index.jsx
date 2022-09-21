@@ -1,9 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
 import apiRequestLogin from '../../services/api';
+import validationEmail from '../../helpers/validationEmail';
 
 function Login() {
+  const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
+  const MIN_LENGTH_PASSWORD = 5;
   const {
     nameLogin,
     setNameLogin,
@@ -11,9 +14,19 @@ function Login() {
     setPasswordLogin,
     errorLogin,
     setErrorLogin,
-    btnDisabledLogin,
+    // btnDisabledLogin,
   } = useContext(CadasterContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log(passwordLogin);
+    console.log(passwordLogin.length > MIN_LENGTH_PASSWORD);
+    if ((passwordLogin.length > MIN_LENGTH_PASSWORD) && (validationEmail(nameLogin))) {
+      setBtnDisabledLogin(false);
+    } else {
+      setBtnDisabledLogin(true);
+    }
+  }, [nameLogin, passwordLogin]);
 
   const noAccountBtn = () => {
     navigate('/register');
@@ -42,7 +55,7 @@ function Login() {
             <p>Login</p>
             <input
               name="login"
-              type="text"
+              type="email"
               placeholder="email@tryber.com.br"
               data-testid="common_login__input-email"
               onChange={ (ele) => setNameLogin(
