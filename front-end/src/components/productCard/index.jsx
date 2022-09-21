@@ -1,6 +1,7 @@
 import React from 'react';
 
 function ProductCard() {
+  const id = '01';
   return (
     <div>
       <div>
@@ -39,7 +40,6 @@ function ProductCard() {
         </button>
       </div>
     </div>
-
   );
 }
 export default ProductCard;
