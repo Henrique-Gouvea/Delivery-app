@@ -4,10 +4,13 @@ function Footer() {
   return (
     <footer>
       <div>
-        <p>Ver Carrinho:$0,00</p>
+        <p
+          data-testid="customer_products__checkout-bottom-value"
+        >
+          Ver Carrinho:$0,00
+        </p>
       </div>
     </footer>
-
   );
 }
 export default Footer;
