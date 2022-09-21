@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import CadasterContext from './CadasterContext';
 
 function CadasterProvider({ children }) {
@@ -11,8 +12,7 @@ function CadasterProvider({ children }) {
 
   }, [nameLogin, passwordLogin]);
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const stateValue = {
+  const stateValue = useMemo(() => ({
     nameLogin,
     setNameLogin,
     passwordLogin,
@@ -23,7 +23,7 @@ function CadasterProvider({ children }) {
     setEmailCadaster,
     passwordCadaster,
     setPasswordCadaster,
-  };
+  }), [nameLogin, passwordLogin, nameCadaster, emailCadaster, passwordCadaster]);
 
   return (
     <CadasterContext.Provider value={ stateValue }>
@@ -31,5 +31,9 @@ function CadasterProvider({ children }) {
     </CadasterContext.Provider>
   );
 }
+
+CadasterProvider.propTypes = {
+  children: PropTypes.node,
+}.isRequired;
 
 export default CadasterProvider;
