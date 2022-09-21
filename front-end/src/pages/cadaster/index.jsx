@@ -6,7 +6,7 @@ import validationEmail from '../../helpers/validationEmail';
 function Cadaster() {
   const [btnDisabledCadaster, setBtnDisabledCadaster] = useState(true);
   const MIN_LENGTH_PASSWORD = 5;
-  const MAX_LENGTH_NAME = 12;
+  const MIN_LENGTH_NAME = 11;
   const {
     nameCadaster,
     setNameCadaster,
@@ -24,7 +24,7 @@ function Cadaster() {
     console.log(passwordCadaster.length);
     console.log(passwordCadaster.length > MIN_LENGTH_PASSWORD);
     if ((passwordCadaster.length > MIN_LENGTH_PASSWORD)
-    && (validationEmail(emailCadaster)) && (nameCadaster.length < MAX_LENGTH_NAME)) {
+    && (validationEmail(emailCadaster)) && (nameCadaster.length > MIN_LENGTH_NAME)) {
       setBtnDisabledCadaster(false);
     } else setBtnDisabledCadaster(true);
   }, [emailCadaster, passwordCadaster, nameCadaster]);
