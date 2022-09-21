@@ -10,7 +10,23 @@ function Cadaster() {
     setEmailCadaster,
     passwordCadaster,
     setPasswordCadaster,
+    errorCadaster,
+    setErrorCadaster,
   } = useContext(CadasterContext);
+
+  const clickSubmitCadaster = (event) => {
+    event.preventDefault();
+    // if (!validate()) return;
+    apiRequestLogin({ name: nameLogin, password: passwordLogin })
+      .then((e) => {
+        if (e.ok) {
+          navigate('/home');
+        } else setErrorCadaster(e.why);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
@@ -57,11 +73,21 @@ function Cadaster() {
             <button
               type="submit"
               data-testid="common_register__button-register"
+              onClick={ clickSubmitCadaster }
             >
               CADASTRAR
             </button>
           </div>
-          <p data-testid="common_register__element-invalid_register">Mensagem de erro</p>
+          { errorCadaster
+            ? (
+              <p
+                data-testid="common_register__element-invalid_register"
+              >
+                {errorCadaster}
+              </p>
+            )
+            : <p /> }
+
         </form>
       </div>
     </div>

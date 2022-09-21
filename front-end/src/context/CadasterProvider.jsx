@@ -5,9 +5,13 @@ import CadasterContext from './CadasterContext';
 function CadasterProvider({ children }) {
   const [nameLogin, setNameLogin] = useState('');
   const [passwordLogin, setPasswordLogin] = useState('');
+  const [errorLogin, setErrorLogin] = useState('');
+
   const [nameCadaster, setNameCadaster] = useState('');
   const [emailCadaster, setEmailCadaster] = useState('');
   const [passwordCadaster, setPasswordCadaster] = useState('');
+  const [errorCadaster, setErrorCadaster] = useState('');
+
   useEffect(() => {
 
   }, [nameLogin, passwordLogin]);
@@ -23,6 +27,10 @@ function CadasterProvider({ children }) {
     setEmailCadaster,
     passwordCadaster,
     setPasswordCadaster,
+    errorLogin,
+    setErrorLogin,
+    errorCadaster,
+    setErrorCadaster,
   }), [nameLogin, passwordLogin, nameCadaster, emailCadaster, passwordCadaster]);
 
   return (

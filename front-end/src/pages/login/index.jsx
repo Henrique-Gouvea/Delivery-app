@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
+import apiRequestLogin from '../../services/api';
 
 function Login() {
   const {
@@ -8,11 +9,27 @@ function Login() {
     setNameLogin,
     passwordLogin,
     setPasswordLogin,
+    errorLogin,
+    setErrorLogin,
   } = useContext(CadasterContext);
   const navigate = useNavigate();
 
   const noAccountBtn = () => {
     navigate('/register');
+  };
+
+  const clickSubmitLogin = (event) => {
+    event.preventDefault();
+    // if (!validate()) return;
+    apiRequestLogin({ name: nameLogin, password: passwordLogin })
+      .then((e) => {
+        if (e.ok) {
+          navigate('/home');
+        } else setErrorLogin(e.why);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -49,6 +66,7 @@ function Login() {
             <button
               type="submit"
               data-testid="common_login__button-login"
+              onClick={ clickSubmitLogin }
             >
               LOGIN
             </button>
@@ -60,7 +78,9 @@ function Login() {
               Ainda não tenho conta
             </button>
           </div>
-          <p data-testid="common_login__element-invalid-email">Mensagem de erro</p>
+          { errorLogin
+            ? <p data-testid="common_login__element-invalid-email">{errorLogin}</p>
+            : <p /> }
         </form>
       </div>
     </div>
