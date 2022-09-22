@@ -1,7 +1,7 @@
 import React from 'react';
 
 function CheckoutCard() {
-  const index = '01';
+  const index = '3';
   return (
     <div>
       <div>

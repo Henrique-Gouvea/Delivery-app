@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ProductCard() {
-  const id = '01';
+  const id = '3';
   return (
     <div>
       <div>
