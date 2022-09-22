@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../../components/header';
 import CadasterUserForm from '../../../components/cadasterUserForm';
+import TableUsers from '../../../components/tableUsers';
 
 function Manage() {
   return (
@@ -10,6 +11,10 @@ function Manage() {
       <div>
         <h3>Cadastrar novo usuario</h3>
         <CadasterUserForm />
+      </div>
+      <div>
+        <h3>Lista Usuarios</h3>
+        <TableUsers />
       </div>
     </div>
   );
