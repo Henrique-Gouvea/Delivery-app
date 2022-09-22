@@ -4,6 +4,7 @@ import Login from '../pages/login';
 import Cadaster from '../pages/cadaster';
 import Products from '../pages/client/products';
 import Checkout from '../pages/client/checkout';
+import Orders from '../pages/client/orders';
 
 function RoutesApp() {
   return (
@@ -13,6 +14,7 @@ function RoutesApp() {
       <Route exact path="/register" element={ <Cadaster /> } />
       <Route exact path="/customer/products" element={ <Products /> } />
       <Route exact path="/customer/checkout" element={ <Checkout /> } />
+      <Route exact path="/customer/orders" element={ <Orders /> } />
     </Routes>
   );
 }
