@@ -2,8 +2,8 @@ const Joi = require("joi");
 const { User } = require("../models");
 const sendError = require("../middlewares/sendError");
 const createToken = require("../middlewares/createToken");
-// import { StatusCodes } from "http-status-codes";
-const { verifyPassword } = require("../middlewares/md5");
+const { checkPassword, encryptPassword } = require('../middlewares/md5')
+const { StatusCodes } = require("http-status-codes");
 
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
@@ -11,27 +11,23 @@ const loginSchema = Joi.object({
 });
 
 const createNewToken = async ({ email, password }) => {
-  console.log("loginService, createToken");
-
   const { error } = loginSchema.validate({ email, password });
-  if (error)
-    return sendError(404, "Some required fields are missing");
+  if (error) sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
 
   const user = await User.findOne({ where: { email } });
+  if (!user) sendError(StatusCodes.NOT_FOUND, "Not found");
 
-  if (!user) {
-    // || user.password !== password)
-    return sendError(404, "Not found");
-  }
-
-  verifyPassword(password, user.password);
+  const passHash = encryptPassword(password);
+  const result = checkPassword(passHash, user.password);
 
   const token = createToken({ email: user.email, password: user.password });
 
-  console.log('=============');
-  console.log('token', token);
-
-  return token;
+  return {
+    token,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
 };
 
 module.exports = {

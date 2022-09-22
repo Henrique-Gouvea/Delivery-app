@@ -10,7 +10,6 @@ const createUser = async (req, res, next) => {
 
 const findAll = async (_req, res) => {
   const allUsers = await userService.findAll();
-  console.log(allUsers)
 
   res.status(StatusCodes.OK).json(allUsers);
 };

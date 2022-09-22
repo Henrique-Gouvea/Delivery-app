@@ -1,5 +1,10 @@
-const middlewareErrors = (error, req, res, _next) => {
-  res.status(error.status || 500).json({ message: error.message });
+const middlewareErrors = (error, _req, res, _next) => {
+
+  const { status, message } = error;
+
+  if (!status) return res.status(500).json({ message });
+
+  return res.status(status).json({ message });
 };
 
 module.exports = middlewareErrors;
