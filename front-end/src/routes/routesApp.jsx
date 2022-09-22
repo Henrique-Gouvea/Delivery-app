@@ -7,6 +7,7 @@ import Checkout from '../pages/client/checkout';
 import OrdersDetails from '../pages/client/ordersDetails';
 import Orders from '../pages/client/orders';
 import Manage from '../pages/adm/manage';
+import OrdersSellers from '../pages/seller/ordersSeller';
 
 function RoutesApp() {
   return (
@@ -19,6 +20,7 @@ function RoutesApp() {
       <Route exact path="/customer/orders" element={ <Orders /> } />
       <Route exact path="/customer/orders/:id" element={ <OrdersDetails /> } />
       <Route exact path="/admin/manage" element={ <Manage /> } />
+      <Route exact path="/seller/orders" element={ <OrdersSellers /> } />
     </Routes>
   );
 }

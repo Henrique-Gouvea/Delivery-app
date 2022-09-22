@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TableCheckout() {
-  const index = '01';
+  const index = '3';
   return (
     <table>
       <thead>
