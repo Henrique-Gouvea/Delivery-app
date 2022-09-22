@@ -1,20 +1,20 @@
-const md5 = require("md5");
 const sendError = require("./sendError");
-import { StatusCodes } from "http-status-codes";
+const md5 = require("md5");
+const { StatusCodes } = require("http-status-codes");
 
-const encriptPassword = (password) => {
-  const passwordHash = md5(password);
-  return passwordHash;
+const encryptPassword = (password) => {
+  const passEncryp = md5(password);
+  return passEncryp;
 };
 
-const verifyPassword = (password, passwordHash) => {
-  const passwordEncript = md5(password);
-  if (passwordEncript !== passwordHash) {
-    return sendError(StatusCodes.BAD_REQUEST, "Invalid password");
+const checkPassword = (password, passwordHash) => {
+  if (password !== passwordHash){
+    sendError(StatusCodes.BAD_REQUEST, "Invalid password");
   }
+  return true;
 };
 
 module.exports = {
-  encriptPassword,
-  verifyPassword,
+  encryptPassword,
+  checkPassword,
 };

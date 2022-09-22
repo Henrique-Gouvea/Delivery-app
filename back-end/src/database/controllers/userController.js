@@ -1,5 +1,5 @@
 const userService = require('../services/userService');
-import { StatusCodes } from "http-status-codes";
+const { StatusCodes } = require('http-status-codes');
 
 const createUser = async (req, res, next) => {
   const user = req.body;
@@ -10,7 +10,6 @@ const createUser = async (req, res, next) => {
 
 const findAll = async (_req, res) => {
   const allUsers = await userService.findAll();
-  console.log(allUsers)
 
   res.status(StatusCodes.OK).json(allUsers);
 };

@@ -7,8 +7,8 @@ const createToken = (user) => {
     algorithm: "HS256",
   });
 
-  console.log('createToken');
-  console.log('newToken', newToken);
+  // console.log('createToken');
+  // console.log('newToken', newToken);
 
   return newToken;
 };
