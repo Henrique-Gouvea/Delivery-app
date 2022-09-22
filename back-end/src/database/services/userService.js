@@ -12,8 +12,6 @@ const userSchema = Joi.object({
 });
 
 const createUser = async (user) => {
-  console.log('user.email', user.email)
-  console.log('user', user)
   const { error } = userSchema.validate(user);
   if (error) sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
 
