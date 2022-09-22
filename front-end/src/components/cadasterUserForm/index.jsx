@@ -11,10 +11,10 @@ function cadasterUserForm() {
             type="text"
             placeholder="Nome"
             data-testid="admin_manage__input-name"
-            // onChange={ (ele) => setNameCadaster(
+            // onChange={ (ele) => setNameCadasterUserForm(
             //   ele.target.value,
             // ) }
-            // value={ nameCadaster }
+            // value={ nameCadasterUserForm }
           />
           <p>Email</p>
           <input
