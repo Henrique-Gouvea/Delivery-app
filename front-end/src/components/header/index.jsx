@@ -1,6 +1,11 @@
 import React from 'react';
+import { getStorageUser } from '../../helpers/localStorage';
 
 function Header() {
+  const getName = () => {
+    const teste = getStorageUser();
+    return teste.name;
+  };
   return (
     <header>
       <div>
@@ -20,7 +25,7 @@ function Header() {
           <h2
             data-testid="customer_products__element-navbar-user-full-name"
           >
-            Nome
+            {getName()}
 
           </h2>
           <h2

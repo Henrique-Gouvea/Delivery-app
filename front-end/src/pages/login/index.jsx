@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
 import apiRequestLogin from '../../services/api';
 import validationEmail from '../../helpers/validationEmail';
+import { saveStorageUser } from '../../helpers/localStorage';
 
 function Login() {
   const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
@@ -49,6 +50,8 @@ function Login() {
     event.preventDefault();
     apiRequestLogin({ email: nameLogin, password: passwordLogin })
       .then((e) => {
+        console.log(e);
+        if (e.role) saveStorageUser(e);
         logicalNavigate(e.role);
       })
       .catch((err) => {
