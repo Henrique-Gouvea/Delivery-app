@@ -1,7 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
+import { saveStorageUser } from '../../helpers/localStorage';
 import validationEmail from '../../helpers/validationEmail';
+import { apiRequestCadaster } from '../../services/api';
 
 function Cadaster() {
   const [btnDisabledCadaster, setBtnDisabledCadaster] = useState(true);
@@ -19,24 +21,33 @@ function Cadaster() {
     // btnDisabledCadaster,
     // setBtnDisabledCadaster,
   } = useContext(CadasterContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(passwordCadaster.length);
-    console.log(passwordCadaster.length > MIN_LENGTH_PASSWORD);
     if ((passwordCadaster.length > MIN_LENGTH_PASSWORD)
     && (validationEmail(emailCadaster)) && (nameCadaster.length > MIN_LENGTH_NAME)) {
       setBtnDisabledCadaster(false);
     } else setBtnDisabledCadaster(true);
   }, [emailCadaster, passwordCadaster, nameCadaster]);
 
+  const clearStateForm = () => {
+    setErrorCadaster('');
+    setNameCadaster('');
+    setEmailCadaster('');
+    setPasswordCadaster('');
+  };
+
   const clickSubmitCadaster = (event) => {
     event.preventDefault();
-    // if (!validate()) return;
-    apiRequestLogin({ name: nameLogin, password: passwordLogin })
+    apiRequestCadaster({
+      name: nameCadaster, password: passwordCadaster, email: emailCadaster })
       .then((e) => {
-        if (e.ok) {
-          navigate('/home');
-        } else setErrorCadaster(e.why);
+        if (e.role) {
+          console.log(e);
+          saveStorageUser(e);
+          clearStateForm();
+          navigate('/customer/products');
+        } else setErrorCadaster(e.message);
       })
       .catch((err) => {
         console.log(err);
