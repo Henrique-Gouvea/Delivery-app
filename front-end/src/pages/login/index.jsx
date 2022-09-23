@@ -14,8 +14,7 @@ function Login() {
     passwordLogin,
     setPasswordLogin,
     errorLogin,
-    setErrorLogin,
-    // btnDisabledLogin,
+    setErrorLogin, // teste
   } = useContext(CadasterContext);
   const navigate = useNavigate();
 
