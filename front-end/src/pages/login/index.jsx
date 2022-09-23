@@ -33,17 +33,17 @@ function Login() {
     navigate('/register');
   };
 
-  const logicalNavigate = (typeUser) => {
-    if (typeUser === 'customer') {
+  const logicalNavigate = (user) => {
+    if (user.role === 'customer') {
       navigate('/customer/products');
       setErrorLogin('');
-    } else if (typeUser === 'seller') {
+    } else if (user.role === 'seller') {
       navigate('/seller/orders');
       setErrorLogin('');
-    } else if (typeUser === 'administrator') {
+    } else if (user.role === 'administrator') {
       navigate('/admin/manage');
       setErrorLogin('');
-    } else setErrorLogin(e.message);
+    } else setErrorLogin(user.message);
   };
 
   const clickSubmitLogin = async (event) => {
@@ -52,7 +52,7 @@ function Login() {
       .then((e) => {
         console.log(e);
         if (e.role) saveStorageUser(e);
-        logicalNavigate(e.role);
+        logicalNavigate(e);
       })
       .catch((err) => {
         console.log(err);

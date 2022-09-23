@@ -1,15 +1,35 @@
-import React from 'react';
-import { getStorageUser } from '../../helpers/localStorage';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { getStorageUser, clearStorageUser } from '../../helpers/localStorage';
 
-function Header() {
-  const getName = () => {
-    const teste = getStorageUser();
-    return teste.name;
+class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nameHeader: '',
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      nameHeader: this.teste(),
+    });
+  }
+
+  teste = () => {
+    const user = getStorageUser();
+    console.log(user);
+    return user.name;
   };
-  return (
-    <header>
-      <div>
-        <nav>
+
+  render() {
+    const {
+      nameHeader,
+    } = this.state;
+    return (
+      <header>
+        <div>
+
           <h2
             data-testid="customer_products__element-navbar-link-products"
           >
@@ -25,17 +45,22 @@ function Header() {
           <h2
             data-testid="customer_products__element-navbar-user-full-name"
           >
-            {getName()}
+            {nameHeader}
 
           </h2>
-          <h2
-            data-testid="customer_products__element-navbar-link-logout"
-          >
-            Sair
-          </h2>
-        </nav>
-      </div>
-    </header>
-  );
+          <Link to="/login">
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-logout"
+              onClick={ () => clearStorageUser() }
+            >
+              Sair
+            </button>
+          </Link>
+
+        </div>
+      </header>
+    );
+  }
 }
 export default Header;
