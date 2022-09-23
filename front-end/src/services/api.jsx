@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const request = async (resource, method, body) => {
-  const { name, password } = body;
+  const { email, password } = body;
   try {
     const res = await axios[method](`http://localhost:3001${resource}`, {
-      name,
+      email,
       password,
     });
     return res.data;

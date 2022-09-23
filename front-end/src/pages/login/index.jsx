@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
 import apiRequestLogin from '../../services/api';
 import validationEmail from '../../helpers/validationEmail';
+import { saveStorageUser } from '../../helpers/localStorage';
 
 function Login() {
   const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
@@ -32,17 +33,30 @@ function Login() {
     navigate('/register');
   };
 
-  const clickSubmitLogin = (event) => {
+  const logicalNavigate = (user) => {
+    if (user.role === 'customer') {
+      navigate('/customer/products');
+      setErrorLogin('');
+    } else if (user.role === 'seller') {
+      navigate('/seller/orders');
+      setErrorLogin('');
+    } else if (user.role === 'administrator') {
+      navigate('/admin/manage');
+      setErrorLogin('');
+    } else setErrorLogin(user.message);
+  };
+
+  const clickSubmitLogin = async (event) => {
     event.preventDefault();
-    // if (!validate()) return;
-    apiRequestLogin({ name: nameLogin, password: passwordLogin })
+    apiRequestLogin({ email: nameLogin, password: passwordLogin })
       .then((e) => {
-        if (e.ok) {
-          navigate('/home');
-        } else setErrorLogin(e.why);
+        console.log(e);
+        if (e.role) saveStorageUser(e);
+        logicalNavigate(e);
       })
       .catch((err) => {
         console.log(err);
+        setErrorLogin(err.message);
       });
   };
 
