@@ -1,17 +1,6 @@
-const jwt = require("jsonwebtoken");
+const { verifyToken } = require("./jwt");
 const sendError = require("./sendError");
 
-const { JWT_SECRET } = process.env;
-
-const verifyToken = (token) => {
-  if (!token) {
-    return sendError(401, "Token not found");
-  }
-
-  const verify = jwt.verify(token, JWT_SECRET);
-
-  return verify;
-};
 
 const auth = (req, _res, next) => {
   const token = req.headers.authorization;

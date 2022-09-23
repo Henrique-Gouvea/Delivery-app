@@ -7,9 +7,6 @@ const createUser = async (req, res, next) => {
     const newUser = await userService.createUser(user);
     if (newUser.error) return next(newUser.error);
 
-    console.log('===============');
-    console.log('req.headers', req.headers);
-
     return res.status(StatusCodes.CREATED).json(newUser);
   } catch (error) {
     next(error);
