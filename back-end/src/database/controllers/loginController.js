@@ -11,7 +11,7 @@ const createToken = async (req, res, next) => {
     req.user = user;
     req.headers.authorization = user.token;
 
-    return res.status(StatusCodes.CREATED).json(user);
+    return res.status(StatusCodes.OK).json(user);
   } catch (error) {
     next(error);
   }
