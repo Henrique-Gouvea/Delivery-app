@@ -32,17 +32,28 @@ function Login() {
     navigate('/register');
   };
 
-  const clickSubmitLogin = (event) => {
+  const logicalNavigate = (typeUser) => {
+    if (typeUser === 'customer') {
+      navigate('/customer/products');
+      setErrorLogin('');
+    } else if (typeUser === 'seller') {
+      navigate('/seller/orders');
+      setErrorLogin('');
+    } else if (typeUser === 'administrator') {
+      navigate('/admin/manage');
+      setErrorLogin('');
+    } else setErrorLogin(e.message);
+  };
+
+  const clickSubmitLogin = async (event) => {
     event.preventDefault();
-    // if (!validate()) return;
-    apiRequestLogin({ name: nameLogin, password: passwordLogin })
+    apiRequestLogin({ email: nameLogin, password: passwordLogin })
       .then((e) => {
-        if (e.ok) {
-          navigate('/home');
-        } else setErrorLogin(e.why);
+        logicalNavigate(e.role);
       })
       .catch((err) => {
         console.log(err);
+        setErrorLogin(err.message);
       });
   };
 
