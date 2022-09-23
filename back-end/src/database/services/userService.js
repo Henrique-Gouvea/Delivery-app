@@ -21,7 +21,8 @@ const createUser = async (user) => {
   const findName = await User.findOne({ where: { name: user.name } });
   const findEmail = await User.findOne({ where: { email: user.email } });
 
-  if (findName || findEmail) sendError(StatusCodes.CONFLICT, "Customer alredy exists");
+  if (findName || findEmail)
+    sendError(StatusCodes.CONFLICT, "Customer alredy exists");
 
   const newUser = await User.create({
     ...user,
