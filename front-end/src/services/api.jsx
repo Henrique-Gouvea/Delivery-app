@@ -1,17 +1,14 @@
 import axios from 'axios';
 
 const request = async (resource, method, body) => {
-  const { email, password } = body;
   try {
-    const res = await axios[method](`http://localhost:3001${resource}`, {
-      email,
-      password,
-    });
+    const res = await axios[method](`http://localhost:3001${resource}`, body);
     return res.data;
   } catch (err) { return (err.response.data); }
 };
 
-const apiRequestLogin = async (user) => (
+export const apiRequestLogin = async (user) => (
   request('/login', 'post', user));
 
-export default apiRequestLogin;
+export const apiRequestCadaster = async (user) => (
+  request('/user', 'post', user));

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
-import apiRequestLogin from '../../services/api';
+import { apiRequestLogin } from '../../services/api';
 import validationEmail from '../../helpers/validationEmail';
 import { saveStorageUser } from '../../helpers/localStorage';
 
@@ -20,8 +20,6 @@ function Login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(passwordLogin);
-    console.log(passwordLogin.length > MIN_LENGTH_PASSWORD);
     if ((passwordLogin.length > MIN_LENGTH_PASSWORD) && (validationEmail(nameLogin))) {
       setBtnDisabledLogin(false);
     } else {
@@ -33,16 +31,22 @@ function Login() {
     navigate('/register');
   };
 
+  const clearStateForm = () => {
+    setErrorLogin('');
+    setNameLogin('');
+    setPasswordLogin('');
+  };
+
   const logicalNavigate = (user) => {
     if (user.role === 'customer') {
+      clearStateForm();
       navigate('/customer/products');
-      setErrorLogin('');
     } else if (user.role === 'seller') {
+      clearStateForm();
       navigate('/seller/orders');
-      setErrorLogin('');
     } else if (user.role === 'administrator') {
+      clearStateForm();
       navigate('/admin/manage');
-      setErrorLogin('');
     } else setErrorLogin(user.message);
   };
 
@@ -50,7 +54,6 @@ function Login() {
     event.preventDefault();
     apiRequestLogin({ email: nameLogin, password: passwordLogin })
       .then((e) => {
-        console.log(e);
         if (e.role) saveStorageUser(e);
         logicalNavigate(e);
       })
