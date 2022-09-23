@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { User } = require("../models");
 const sendError = require("../middlewares/sendError");
-const createToken = require("../middlewares/createToken");
+const { createToken } = require("../middlewares/jwt");
 const { checkPassword, encryptPassword } = require('../middlewares/md5')
 const { StatusCodes } = require("http-status-codes");
 

@@ -1,21 +1,28 @@
 const { User } = require("../models");
 const { StatusCodes } = require("http-status-codes");
-const { encriptPassword } = require("../middlewares/createToken");
-const { createToken } = require("../middlewares/createToken");
+const { encryptPassword } = require("../middlewares/md5");
+const sendError = require("../middlewares/sendError");
+const { createToken } = require("../middlewares/jwt");
 const Joi = require("joi");
 
 const userSchema = Joi.object({
-  name: Joi.string().required,
-  email: Joi.string().email().required(),
+  name: Joi.string().required(),
+  email: Joi.string().required(),
   password: Joi.string().required(),
 });
 
 const createUser = async (user) => {
   const { error } = userSchema.validate(user);
   if (error)
-    return sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
+    sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
 
-  const passHash = encriptPassword(user.password);
+  const passHash = encryptPassword(user.password);
+
+  const findName = await User.findOne({ where: { name: user.name } });
+  const findEmail = await User.findOne({ where: { email: user.email } });
+
+  if (findName || findEmail) sendError(StatusCodes.CONFLICT, "Customer alredy exists");
+
   const newUser = await User.create({
     ...user,
     password: passHash,
@@ -24,7 +31,12 @@ const createUser = async (user) => {
 
   const token = createToken({ email: user.email, password: user.password });
 
-  return { token, role: newUser.role };
+  return {
+    token,
+    name: newUser.name,
+    email: newUser.email,
+    role: newUser.role,
+  };
 };
 
 const findAll = async () => {
