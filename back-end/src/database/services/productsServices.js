@@ -15,10 +15,6 @@ const getById = async (id) => {
   const product = Product.findOne({ where: { id } });
   if (!product) sendError(StatusCodes.NOT_FOUND, "Product not found");
 
-  console.log('================');
-  console.log('getById em productsServices');
-  console.log('product', product);
-
   return product;
 };
 
@@ -46,8 +42,8 @@ const updateProduct = (id, product) => {
   const productUpdated = Product.update(product, { where: { id } });
 
   console.log('================');
-  console.log('updateProduct em productsServices');
-  console.log('productUpdated', productUpdated);
+  // console.log('updateProduct em productsServices');
+  console.log('PRODUCT', Product);
 
   return productUpdated;
 };

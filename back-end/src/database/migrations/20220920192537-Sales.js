@@ -17,7 +17,7 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      saler_Id: {
+      seller_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -42,6 +42,7 @@ module.exports = {
       sale_date: {
         type: Sequelize.DATE,
         allowNull: false,
+        defaultValue: new Date(),
       },
       status: {
         type: Sequelize.STRING(50),
