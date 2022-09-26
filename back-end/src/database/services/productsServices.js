@@ -25,9 +25,9 @@ const createProduct = (product) => {
 
   const newProduct = Product.create(product);
 
-  console.log('================');
-  console.log('createProduct em productsServices');
-  console.log('newProduct', newProduct);
+  // console.log('================');
+  // console.log('createProduct em productsServices');
+  // console.log('newProduct', newProduct);
 
   return newProduct
 };
@@ -41,9 +41,9 @@ const updateProduct = (id, product) => {
 
   const productUpdated = Product.update(product, { where: { id } });
 
-  console.log('================');
+  // console.log('================');
   // console.log('updateProduct em productsServices');
-  console.log('PRODUCT', Product);
+  // console.log('PRODUCT', Product);
 
   return productUpdated;
 };

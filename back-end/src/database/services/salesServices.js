@@ -16,7 +16,7 @@ const createSales = async (sales) => {
   const { error } = salesSchema.validate(sales);
   if (error)
     sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
-;
+
   const newSales = await Sale.create({ ...sales, status: 'Pendente' });
   return newSales;
 }
