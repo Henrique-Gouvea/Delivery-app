@@ -18,7 +18,7 @@ const createNewToken = async ({ email, password }) => {
   if (!user) sendError(StatusCodes.NOT_FOUND, "Not found");
 
   const passHash = encryptPassword(password);
-  const result = checkPassword(passHash, user.password);
+  checkPassword(passHash, user.password);
 
   const token = createToken({ email: user.email, password: user.password });
 
