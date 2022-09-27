@@ -5,6 +5,7 @@ const { StatusCodes } = require("http-status-codes");
 const Sequelize = require("sequelize");
 const config = require("../config/config");
 const env = process.env.NODE_ENV || "development";
+const { getById } = require("./productsServices");
 
 const sequelize = new Sequelize(config[env]);
 
@@ -23,9 +24,21 @@ const createSales = async (sales) => {
   if (error)
     sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
 
+  const products = await Promise.all(
+    sales.products.map((product) => getById(product.product_id))
+  );
+
+  const totalValue = products
+    .reduce(
+      (acc, product, index) =>
+        acc + product.price * sales.products[index].quantity,
+      0
+    )
+    .toFixed(2);
+
   try {
     const newSales = await Sale.create(
-      { ...sales, status: "Pendente" },
+      { ...sales, total_price: totalValue, status: "Pendente" },
       { transaction: t }
     );
 
