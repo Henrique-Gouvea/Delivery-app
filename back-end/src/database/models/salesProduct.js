@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         foreignKey: true,
       },
-      quantity_id: {
+      quantity: {
         type: DataTypes.INTEGER,
       },
     },
-    { timestamps: false },
+    { timestamps: false, tableName: "salesProducts" }
   );
 
   SalesProduct.associate = (models) => {
