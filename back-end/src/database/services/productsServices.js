@@ -24,11 +24,6 @@ const createProduct = (product) => {
     sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
 
   const newProduct = Product.create(product);
-
-  // console.log('================');
-  // console.log('createProduct em productsServices');
-  // console.log('newProduct', newProduct);
-
   return newProduct
 };
 
@@ -40,11 +35,6 @@ const updateProduct = (id, product) => {
   if (!getById(id)) sendError(StatusCodes.NOT_FOUND, "Product not found");
 
   const productUpdated = Product.update(product, { where: { id } });
-
-  // console.log('================');
-  // console.log('updateProduct em productsServices');
-  // console.log('PRODUCT', Product);
-
   return productUpdated;
 };
 
