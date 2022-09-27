@@ -3,7 +3,9 @@ import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
 import {
   getStorageProducts,
-  addProductStorage } from '../../helpers/localStorageProducts';
+  addProductStorage,
+  getCartTotal,
+} from '../../helpers/localStorageProducts';
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
@@ -14,6 +16,7 @@ class ProductCard extends Component {
     super(props);
     this.state = {
       products: '',
+      total: '0,00',
     };
   }
 
@@ -22,6 +25,7 @@ class ProductCard extends Component {
     console.log(productsUpdated);
     this.setState({
       products: productsUpdated,
+      total: getCartTotal(),
     });
   }
 
@@ -63,6 +67,7 @@ class ProductCard extends Component {
     const products = await this.updateProducts();
     this.setState({
       products,
+      total: getCartTotal(),
     });
   };
 
@@ -72,12 +77,14 @@ class ProductCard extends Component {
     const products = await this.updateProducts();
     this.setState({
       products,
+      total: getCartTotal(),
     });
   };
 
   render() {
     const {
       products,
+      total,
     } = this.state;
     return (
       <div>
@@ -125,6 +132,15 @@ class ProductCard extends Component {
                 </button>
               </div>
             </div>))) : <p>Carregando</p>}
+        <div>
+          {' '}
+          <p
+            data-testid="customer_products__checkout-bottom-value"
+          >
+            Ver Carrinho:R$
+            { total }
+          </p>
+        </div>
       </div>
     );
   }

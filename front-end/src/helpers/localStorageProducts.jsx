@@ -15,3 +15,17 @@ export const addProductStorage = (product) => {
     saveStorageProducts([...productsFiltered, product]);
   } else saveStorageProducts([product]);
 };
+
+export function saveCartTotal(total) {
+  localStorage.setItem('cartTotal', JSON.stringify(total));
+}
+
+export function getCartTotal() {
+  const productsCart = getStorageProducts();
+  let total = 0;
+  console.log(productsCart);
+  productsCart.forEach((product) => {
+    total = (product.price * product.quantity) + total;
+  });
+  return total.toFixed(2);
+}
