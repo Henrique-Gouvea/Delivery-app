@@ -12,6 +12,7 @@ const salesSchema = Joi.object({
 });
 
 
+
 const createSales = async (sales) => {
   const { error } = salesSchema.validate(sales);
   if (error)
