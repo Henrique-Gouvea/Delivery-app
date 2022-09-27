@@ -24,8 +24,10 @@ export function getCartTotal() {
   const productsCart = getStorageProducts();
   let total = 0;
   console.log(productsCart);
-  productsCart.forEach((product) => {
-    total = (product.price * product.quantity) + total;
-  });
+  if (productsCart) {
+    productsCart.forEach((product) => {
+      total = (product.price * product.quantity) + total;
+    });
+  }
   return total.toFixed(2);
 }

@@ -42,7 +42,8 @@ class ProductCard extends Component {
   updateProducts = async () => {
     const products = getStorageProducts();
     const allProducts = await this.getAllProducts();
-
+    console.log(allProducts);
+    console.log(products);
     if (products) {
       let allProductsUpdated = allProducts;
       products.forEach((prod) => {
@@ -72,7 +73,7 @@ class ProductCard extends Component {
   };
 
   decBtnClick = async (prod) => {
-    const quantity = prod.quantity ? prod.quantity - 1 : 1;
+    const quantity = prod.quantity ? prod.quantity - 1 : 0;
     addProductStorage({ ...prod, quantity });
     const products = await this.updateProducts();
     this.setState({
@@ -106,8 +107,9 @@ class ProductCard extends Component {
               <div>
                 <p
                   data-testid={ `customer_products__element-card-title-${prod.id}` }
+                  value={ prod.name }
                 >
-                  {prod.name}
+                  {/* {prod.name} */}
                 </p>
                 <button
                   data-testid={ `customer_products__button-card-rm-item-${prod.id}` }
