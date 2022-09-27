@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
+import {
+  getStorageProducts,
+  addProductStorage } from '../../helpers/localStorageProducts';
+
+const COMPARE_ONE = 1;
+const COMPARE_ONE_NEGATIVE = -1;
 
 class ProductCard extends Component {
 // function ProductCard() {
@@ -12,17 +18,61 @@ class ProductCard extends Component {
   }
 
   async componentDidMount() {
-    const products = await this.getAllProducts();
-    console.log(products);
+    const productsUpdated = await this.updateProducts();
+    console.log(productsUpdated);
     this.setState({
-      products,
+      products: productsUpdated,
     });
   }
+
+  compare = (a, b) => {
+    if (a.id < b.id) {
+      return COMPARE_ONE_NEGATIVE;
+    }
+    if (a.id > b.id) {
+      return COMPARE_ONE;
+    }
+    return 0;
+  };
+
+  updateProducts = async () => {
+    const products = getStorageProducts();
+    const allProducts = await this.getAllProducts();
+
+    if (products) {
+      let allProductsUpdated = allProducts;
+      products.forEach((prod) => {
+        allProductsUpdated = allProductsUpdated.filter(
+          (prodFind) => prodFind.id !== prod.id,
+        );
+        allProductsUpdated.push(prod);
+      });
+      return allProductsUpdated.sort(this.compare);
+    } return allProducts.sort(this.compare);
+  };
 
   getAllProducts = async () => {
     const user = getStorageUser();
     const products = await apiRequestProductsGetAll(user.token);
     return products;
+  };
+
+  incBtnClick = async (prod) => {
+    const quantity = prod.quantity ? prod.quantity + 1 : 1;
+    addProductStorage({ ...prod, quantity });
+    const products = await this.updateProducts();
+    this.setState({
+      products,
+    });
+  };
+
+  decBtnClick = async (prod) => {
+    const quantity = prod.quantity ? prod.quantity - 1 : 1;
+    addProductStorage({ ...prod, quantity });
+    const products = await this.updateProducts();
+    this.setState({
+      products,
+    });
   };
 
   render() {
@@ -55,16 +105,21 @@ class ProductCard extends Component {
                 <button
                   data-testid={ `customer_products__button-card-rm-item-${prod.id}` }
                   type="button"
+                  id={ prod.id }
+                  onClick={ () => this.decBtnClick(prod) }
                 >
                   -
                 </button>
                 <input
                   data-testid={ `customer_products__input-card-quantity-${prod.id}` }
-                  value="0"
+                  id={ prod.id }
+                  value={ prod.quantity ? prod.quantity : 0 }
                 />
                 <button
                   data-testid={ `customer_products__button-card-add-item-${prod.id}` }
                   type="button"
+                  id={ prod.id }
+                  onClick={ () => this.incBtnClick(prod) }
                 >
                   +
                 </button>
