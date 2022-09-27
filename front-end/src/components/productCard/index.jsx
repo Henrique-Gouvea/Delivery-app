@@ -6,6 +6,7 @@ import {
   addProductStorage,
   getCartTotal,
 } from '../../helpers/localStorageProducts';
+import './style.css';
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
@@ -102,14 +103,14 @@ class ProductCard extends Component {
                   data-testid={ `customer_products__img-card-bg-image-${prod.id}` }
                   src={ prod.url_image }
                   alt={ prod.name }
+                  // style={ width = '3px' }
                 />
               </div>
               <div>
                 <p
                   data-testid={ `customer_products__element-card-title-${prod.id}` }
-                  value={ prod.name }
                 >
-                  {/* {prod.name} */}
+                  {prod.name}
                 </p>
                 <button
                   data-testid={ `customer_products__button-card-rm-item-${prod.id}` }
@@ -133,7 +134,7 @@ class ProductCard extends Component {
                   +
                 </button>
               </div>
-            </div>))) : <p>Carregando</p>}
+            </div>))) : ''}
         <div>
           {' '}
           <p
