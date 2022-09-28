@@ -11,7 +11,7 @@ const sequelize = new Sequelize(config[env]);
 
 const salesSchema = Joi.object({
   user_id: Joi.number().required(),
-  seller_id: Joi.number().required(),
+  seller_id: Joi.number(),
   total_price: Joi.number().precision(2).required(),
   delivery_address: Joi.string().required(),
   delivery_number: Joi.number().required(),

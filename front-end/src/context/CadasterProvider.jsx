@@ -15,6 +15,8 @@ function CadasterProvider({ children }) {
   const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
   const [btnDisabledCadaster, setBtnDisabledCadaster] = useState(true);
 
+  const [totalCart, setTotalCart] = useState('0,00');
+
   // const MIN_LENGTH_PASSWORD = 4;
   // const MAX_LENGTH_NAME = 12;
 
@@ -56,6 +58,8 @@ function CadasterProvider({ children }) {
     setBtnDisabledLogin,
     btnDisabledCadaster,
     setBtnDisabledCadaster,
+    totalCart,
+    setTotalCart,
   }), [
     nameLogin,
     passwordLogin,
@@ -66,6 +70,7 @@ function CadasterProvider({ children }) {
     errorCadaster,
     btnDisabledLogin,
     btnDisabledCadaster,
+    totalCart,
   ]);
 
   return (
