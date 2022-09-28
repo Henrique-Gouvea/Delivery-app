@@ -3,6 +3,10 @@ import Header from '../../../components/header';
 import TableOrders from '../../../components/tableOrders';
 
 function OrdersDetails() {
+  const { token } = JSON.parse(localStorage.getItem('user'));
+  console.log('===============');
+  console.log('TOKEN', token.token);
+
   return (
     <div>
       <Header />

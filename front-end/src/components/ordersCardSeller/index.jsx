@@ -23,7 +23,7 @@ function OrdersCard() {
         <p
           data-testid={ `seller_orders__element-card-price-${id}` }
         >
-          Valor tota
+          Valor total
         </p>
         <p
           data-testid={ `seller_orders__element-card-address-${id}` }

@@ -9,6 +9,7 @@ import {
 import './style.css';
 import ProdCard from '../prodCard';
 
+
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
 
