@@ -12,7 +12,9 @@ export const addProductStorage = (product) => {
 
   if (productsCart) {
     const productsFiltered = productsCart.filter((prod) => product.id !== prod.id);
-    saveStorageProducts([...productsFiltered, product]);
+    if (Number(product.quantity) === 0) {
+      saveStorageProducts([...productsFiltered]);
+    } else saveStorageProducts([...productsFiltered, product]);
   } else saveStorageProducts([product]);
 };
 
