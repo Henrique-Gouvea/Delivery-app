@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
 import {
   getStorageProducts,
-  addProductStorage } from '../../helpers/localStorageProducts';
+  getCartTotal,
+} from '../../helpers/localStorageProducts';
 import './style.css';
+import ProdCard from '../prodCard';
+
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
@@ -15,14 +19,16 @@ class ProductCard extends Component {
     super(props);
     this.state = {
       products: '',
+      total: '0,00',
     };
   }
 
   async componentDidMount() {
     const productsUpdated = await this.updateProducts();
-    console.log(productsUpdated);
+    console.log(typeof getCartTotal());
     this.setState({
       products: productsUpdated,
+      total: getCartTotal(),
     });
   }
 
@@ -39,7 +45,6 @@ class ProductCard extends Component {
   updateProducts = async () => {
     const products = getStorageProducts();
     const allProducts = await this.getAllProducts();
-
     if (products) {
       let allProductsUpdated = allProducts;
       products.forEach((prod) => {
@@ -58,74 +63,39 @@ class ProductCard extends Component {
     return products;
   };
 
-  incBtnClick = async (prod) => {
-    const quantity = prod.quantity ? prod.quantity + 1 : 1;
-    addProductStorage({ ...prod, quantity });
-    const products = await this.updateProducts();
-    this.setState({
-      products,
-    });
-  };
-
-  decBtnClick = async (prod) => {
-    const quantity = prod.quantity ? prod.quantity - 1 : 1;
-    addProductStorage({ ...prod, quantity });
-    const products = await this.updateProducts();
-    this.setState({
-      products,
-    });
+  changeTotal = (value) => {
+    this.setState({ total: value });
   };
 
   render() {
     const {
       products,
+      total,
     } = this.state;
     return (
       <div>
         {products ? (
           products.map((prod, index) => (
-            <div key={ index }>
-              <div>
-                <p
-                  data-testid={ `customer_products__element-card-price-${prod.id}` }
-                >
-                  {prod.price}
-                </p>
-                <img
-                  data-testid={ `customer_products__img-card-bg-image-${prod.id}` }
-                  src={ prod.url_image }
-                  alt={ prod.name }
-                />
-              </div>
-              <div>
-                <p
-                  data-testid={ `customer_products__element-card-title-${prod.id}` }
-                >
-                  {prod.name}
-                </p>
-                <button
-                  data-testid={ `customer_products__button-card-rm-item-${prod.id}` }
-                  type="button"
-                  id={ prod.id }
-                  onClick={ () => this.decBtnClick(prod) }
-                >
-                  -
-                </button>
-                <input
-                  data-testid={ `customer_products__input-card-quantity-${prod.id}` }
-                  id={ prod.id }
-                  value={ prod.quantity ? prod.quantity : 0 }
-                />
-                <button
-                  data-testid={ `customer_products__button-card-add-item-${prod.id}` }
-                  type="button"
-                  id={ prod.id }
-                  onClick={ () => this.incBtnClick(prod) }
-                >
-                  +
-                </button>
-              </div>
-            </div>))) : <p>Carregando</p>}
+            <ProdCard
+              key={ index }
+              product={ prod }
+              changeTotal={ this.changeTotal }
+              updateProducts={ this.updateProducts }
+            />))) : ''}
+        <Link to="/customer/checkout">
+          <button
+            type="button"
+            data-testid="customer_products__button-cart"
+            disabled={ total === '0.00' }
+          >
+            Ver Carrinho: R$
+            <p
+              data-testid="customer_products__checkout-bottom-value"
+            >
+              { total.toString().replace('.', ',') }
+            </p>
+          </button>
+        </Link>
       </div>
     );
   }
