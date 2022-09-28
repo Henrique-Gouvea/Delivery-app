@@ -85,7 +85,7 @@ class ProductCard extends Component {
           <button
             type="button"
             data-testid="customer_products__button-cart"
-            // disabled={ total === '0.00' }
+            disabled={ total === '0.00' }
           >
             Ver Carrinho: R$
             <p
