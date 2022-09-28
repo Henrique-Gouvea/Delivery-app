@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { history } from 'react-router-dom';
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
@@ -20,6 +21,11 @@ class Checkout extends Component {
 
   changeTotal = (value) => {
     this.setState({ total: value });
+  };
+
+  btnSubmitOrder = () => {
+    console.log('click');
+    console.log(history);
   };
 
   render() {
@@ -67,6 +73,7 @@ class Checkout extends Component {
         <button
           type="submit"
           data-testid="customer_checkout__button-submit-order"
+          onClick={ this.btnSubmitOrder }
         >
           Finalizar pedido
         </button>
