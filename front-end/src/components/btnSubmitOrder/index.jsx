@@ -1,10 +1,16 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getStorageUser } from '../../helpers/localStorage';
 
-function BtnSubmitOrder() {
+function BtnSubmitOrder({ total, adressDelivery, numberDelivery }) {
   const navigate = useNavigate();
   const id = 1;
+
   const clickSubmitOrder = () => {
+    const user = getStorageUser();
+    console.log(user.token);
+    console.log(total, adressDelivery, numberDelivery);
+    // apiRequestSalesGetAll()
     navigate(`/customer/orders/${id}`);
   };
 
