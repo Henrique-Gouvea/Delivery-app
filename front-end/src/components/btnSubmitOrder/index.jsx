@@ -1,14 +1,21 @@
-// import React from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-// function btnSubmitOrder() {
-//   return (
-//     <button
-//       type="submit"
-//       data-testid="customer_checkout__button-submit-order"
-//       onClick={ this.btnSubmitOrder }
-//     >
-//       Finalizar pedido
-//     </button>
-//   );
-// }
-// export default btnSubmitOrder;
+function BtnSubmitOrder() {
+  const navigate = useNavigate();
+  const id = 1;
+  const clickSubmitOrder = () => {
+    navigate(`/customer/orders/${id}`);
+  };
+
+  return (
+    <button
+      type="submit"
+      data-testid="customer_checkout__button-submit-order"
+      onClick={ clickSubmitOrder }
+    >
+      Finalizar pedido
+    </button>
+  );
+}
+export default BtnSubmitOrder;
