@@ -19,7 +19,37 @@ const findAll = async (_req, res) => {
   return res.status(StatusCodes.OK).json(allUsers);
 };
 
+const findAdministrator = async (_req, res, next) => {
+  try {
+    const administrator = await userService.findAdministrator();
+    return res.status(StatusCodes.OK).json(administrator);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const findSeller = async (_req, res, next) => {
+  try {
+    const seller = await userService.findSeller();
+    return res.status(StatusCodes.OK).json(seller);
+  } catch (error) {
+    next(error);
+  }
+}
+
+const findCustomer = async (_req, res, next) => {
+  try {
+    const customer = await userService.findCustomer();
+    return res.status(StatusCodes.OK).json(customer);
+  } catch (error) {
+    next(error);
+  }
+}
+
 module.exports = {
   findAll,
   createUser,
+  findAdministrator,
+  findSeller,
+  findCustomer,
 };

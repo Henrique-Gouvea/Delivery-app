@@ -44,11 +44,36 @@ const findAll = async () => {
   const allUsers = await User.findAll({
     attributes: ["id", "name", "email", "role"],
   });
+  console.log('allUsers', allUsers)
 
   return allUsers;
+};
+
+const findAdministrator = async () => {
+  const allUsersByRole = await User.findAll({ where: { role: 'administrator' } })
+  console.log('allUsersByRole', allUsersByRole)
+
+  return allUsersByRole;
+};
+
+const findSeller = async () => {
+  const allUsersByRole = await User.findAll({ where: { role: 'seller' } })
+  console.log('allUsersByRole', allUsersByRole)
+
+  return allUsersByRole;
+};
+
+const findCustomer = async () => {
+  const allUsersByRole = await User.findAll({ where: { role: 'customer' } })
+  console.log('allUsersByRole', allUsersByRole)
+
+  return allUsersByRole;
 };
 
 module.exports = {
   findAll,
   createUser,
+  findAdministrator,
+  findSeller,
+  findCustomer,
 };
