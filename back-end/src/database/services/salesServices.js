@@ -5,7 +5,7 @@ const { StatusCodes } = require("http-status-codes");
 
 const salesSchema = Joi.object({
   user_id: Joi.number().required(),
-  seller_id: Joi.number().required(),
+  seller_id: Joi.number(),
   total_price: Joi.number().precision(2).required(),
   delivery_address: Joi.string().required(),
   delivery_number: Joi.number().required(),
@@ -13,6 +13,7 @@ const salesSchema = Joi.object({
 
 
 const createSales = async (sales) => {
+  console.log('sales', sales)
   const { error } = salesSchema.validate(sales);
   if (error)
     sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
