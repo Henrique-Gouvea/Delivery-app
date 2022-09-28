@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './style.css';
+
 import CadasterContext from '../../context/CadasterContext';
 import { apiRequestLogin } from '../../services/api';
 import validationEmail from '../../helpers/validationEmail';
@@ -63,15 +65,16 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Logotipo</h1>
-      <div>
-        <form>
-          <div>
-            <p>Login</p>
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Login</h3>
+          <div className="form-group mt-3">
+            <p>Email</p>
             <input
-              name="login"
               type="email"
+              className="form-control mt-1"
+              name="login"
               placeholder="email@tryber.com.br"
               data-testid="common_login__input-email"
               onChange={ (ele) => setNameLogin(
@@ -79,41 +82,56 @@ function Login() {
               ) }
               value={ nameLogin }
             />
+          </div>
+          <div className="form-group mt-4">
             <p>Senha</p>
             <input
+              type="password"
+              className="form-control mt-1"
               name="senha"
-              type="text"
-              placeholder="senha"
+              placeholder="Digite a senha"
               data-testid="common_login__input-password"
               onChange={ (ele) => setPasswordLogin(
                 ele.target.value,
               ) }
               value={ passwordLogin }
             />
-
           </div>
-          <div>
+          <div className="d-grid gap-2 mt-4">
             <button
               type="submit"
+              className="btn btn-primary"
               data-testid="common_login__button-login"
               disabled={ btnDisabledLogin }
               onClick={ clickSubmitLogin }
             >
               LOGIN
             </button>
+          </div>
+          <div className="d-grid gap-2 mt-3">
             <button
               type="submit"
+              className="btn btn-outline-danger"
               onClick={ noAccountBtn }
               data-testid="common_login__button-register"
             >
               Ainda não tenho conta
             </button>
           </div>
-          { errorLogin
-            ? <p data-testid="common_login__element-invalid-email">{errorLogin}</p>
-            : <p /> }
-        </form>
-      </div>
+          <div>
+            { errorLogin
+              ? (
+                <p
+                  className="alert"
+                  data-testid="common_login__element-invalid-email"
+                >
+                  {errorLogin}
+                </p>
+              )
+              : <p /> }
+          </div>
+        </div>
+      </form>
     </div>
   );
 }

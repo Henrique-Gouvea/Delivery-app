@@ -56,7 +56,9 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.2.1",
     "http-status-codes": "^2.2.0",
-    "joi": "^17.6.0"
+    "joi": "^17.6.0",
+    "react-bootstrap": "^2.5.0"
   }
 }

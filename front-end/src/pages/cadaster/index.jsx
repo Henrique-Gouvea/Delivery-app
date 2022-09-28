@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
+import './style.css';
+
 import { useNavigate } from 'react-router-dom';
 import CadasterContext from '../../context/CadasterContext';
 import { saveStorageUser } from '../../helpers/localStorage';
@@ -54,38 +56,50 @@ function Cadaster() {
       });
   };
 
+  const retorneLogin = () => {
+    navigate('/login');
+  };
+
   return (
-    <div>
-      <h1>Cadastro</h1>
-      <div>
-        <form>
-          <div>
+    <div className="Auth-form-container">
+      <form className="Auth-form">
+        <div className="Auth-form-content">
+          <h3 className="Auth-form-title">Cadastro</h3>
+          <div className="form-group mt-3">
             <p>Nome</p>
             <input
-              name="name"
               type="text"
-              placeholder="Nome"
+              className="form-control mt-1"
+              name="name"
+              placeholder="Seu nome"
               data-testid="common_register__input-name"
               onChange={ (ele) => setNameCadaster(
                 ele.target.value,
               ) }
               value={ nameCadaster }
             />
+          </div>
+          <div className="form-group mt-3">
             <p>Email</p>
             <input
-              name="login"
               type="email"
-              placeholder="email@tryber.com.br"
+              className="form-control mt-1"
+              name="login"
+              placeholder="seu-email@site.com.br"
               data-testid="common_register__input-email"
               onChange={ (ele) => setEmailCadaster(
                 ele.target.value,
               ) }
               value={ emailCadaster }
             />
-            <p>Senha</p>
+          </div>
+          <div className="form-group mt-3">
+            <p>Password</p>
             <input
+              type="password"
+              className="form-control mt-1"
               name="senha"
-              type="text"
+              // type="text"
               placeholder="senha"
               data-testid="common_register__input-password"
               onChange={ (ele) => setPasswordCadaster(
@@ -93,11 +107,11 @@ function Cadaster() {
               ) }
               value={ passwordCadaster }
             />
-
           </div>
-          <div>
+          <div className="d-grid gap-2 mt-5">
             <button
               type="submit"
+              className="btn btn-success"
               data-testid="common_register__button-register"
               onClick={ clickSubmitCadaster }
               disabled={ btnDisabledCadaster }
@@ -105,18 +119,30 @@ function Cadaster() {
               CADASTRAR
             </button>
           </div>
-          { errorCadaster
-            ? (
-              <p
-                data-testid="common_register__element-invalid_register"
-              >
-                {errorCadaster}
-              </p>
-            )
-            : <p /> }
-
-        </form>
-      </div>
+          <div className="d-grid gap-2 mt-3">
+            <button
+              type="submit"
+              className="btn btn-outline-danger"
+              onClick={ retorneLogin }
+              // data-testid="common_login__button-register"
+            >
+              Retorna ao login
+            </button>
+          </div>
+          <div>
+            { errorCadaster
+              ? (
+                <p
+                  className="alert"
+                  data-testid="common_register__element-invalid_register"
+                >
+                  {errorCadaster}
+                </p>
+              )
+              : <p /> }
+          </div>
+        </div>
+      </form>
     </div>
   );
 }
