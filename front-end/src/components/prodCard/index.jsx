@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   addProductStorage,
   getCartTotal,
@@ -127,4 +128,9 @@ class ProdCard extends Component {
     );
   }
 }
+
+ProdCard.propTypes = {
+  changeTotal: PropTypes.function,
+}.isRequired;
+
 export default ProdCard;
