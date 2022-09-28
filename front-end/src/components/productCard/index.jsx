@@ -84,10 +84,15 @@ class ProductCard extends Component {
         <Link to="/customer/checkout">
           <button
             type="button"
-            data-testid="customer_products__checkout-bottom-value"
-            disabled={ total === '0.00' }
+            data-testid="customer_products__button-cart"
+            // disabled={ total === '0.00' }
           >
-            { total.toString().replace('.', ',') }
+            Ver Carrinho: R$
+            <p
+              data-testid="customer_products__checkout-bottom-value"
+            >
+              { total.toString().replace('.', ',') }
+            </p>
           </button>
         </Link>
       </div>
