@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
 import {
@@ -82,11 +83,14 @@ class ProductCard extends Component {
               changeTotal={ this.changeTotal }
               updateProducts={ this.updateProducts }
             />))) : ''}
-        <p
-          data-testid="customer_products__checkout-bottom-value"
-        >
-          { total.toString().replace('.', ',') }
-        </p>
+        <Link to="/customer/checkout">
+          <button
+            type="button"
+            data-testid="customer_products__checkout-bottom-value"
+          >
+            { total.toString().replace('.', ',') }
+          </button>
+        </Link>
       </div>
     );
   }
