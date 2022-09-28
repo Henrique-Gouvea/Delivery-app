@@ -4,6 +4,7 @@ import { getStorageUser } from '../../helpers/localStorage';
 import {
   getStorageProducts,
   addProductStorage } from '../../helpers/localStorageProducts';
+import './style.css';
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
