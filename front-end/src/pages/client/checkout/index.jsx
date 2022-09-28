@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { history } from 'react-router-dom';
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
+import BtnSubmitOrder from '../../../components/btnSubmitOrder';
 
 // function Checkout() {
 class Checkout extends Component {
@@ -23,10 +23,10 @@ class Checkout extends Component {
     this.setState({ total: value });
   };
 
-  btnSubmitOrder = () => {
-    console.log('click');
-    console.log(history);
-  };
+  // btnSubmitOrder = () => {
+  //   console.log('click');
+  //   console.log(history);
+  // };
 
   render() {
     const {
@@ -70,13 +70,14 @@ class Checkout extends Component {
             data-testid="customer_checkout__input-address-number"
           />
         </div>
-        <button
+        <BtnSubmitOrder />
+        {/* <button
           type="submit"
           data-testid="customer_checkout__button-submit-order"
           onClick={ this.btnSubmitOrder }
         >
           Finalizar pedido
-        </button>
+        </button> */}
       </div>
 
     );
