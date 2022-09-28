@@ -24,7 +24,7 @@ class ProductCard extends Component {
 
   async componentDidMount() {
     const productsUpdated = await this.updateProducts();
-    console.log(productsUpdated);
+    console.log(typeof getCartTotal());
     this.setState({
       products: productsUpdated,
       total: getCartTotal(),
@@ -44,8 +44,6 @@ class ProductCard extends Component {
   updateProducts = async () => {
     const products = getStorageProducts();
     const allProducts = await this.getAllProducts();
-    console.log(allProducts);
-    console.log(products);
     if (products) {
       let allProductsUpdated = allProducts;
       products.forEach((prod) => {
@@ -87,6 +85,7 @@ class ProductCard extends Component {
           <button
             type="button"
             data-testid="customer_products__checkout-bottom-value"
+            disabled={ total === '0.00' }
           >
             { total.toString().replace('.', ',') }
           </button>

@@ -33,24 +33,19 @@ class ProdCard extends Component {
 
   decBtnClick = async (prod) => {
     const { inputQtde } = this.state;
+    const { changeTotal } = this.props;
     const quantity = Number(inputQtde - 1);
-    // addProductStorage({ ...prod, quantity });
-    // this.setState({
-    //   inputQtde: quantity,
-    // });
     if (quantity >= 0) {
       this.setState({
         inputQtde: quantity,
       });
       addProductStorage({ ...prod, quantity });
-      updateProducts();
     } else {
       this.setState({
         inputQtde: 0,
       });
-      const { changeTotal } = this.props;
-      changeTotal(getCartTotal());
     }
+    changeTotal(getCartTotal());
   };
 
   handleChange = async ({ target }) => {
