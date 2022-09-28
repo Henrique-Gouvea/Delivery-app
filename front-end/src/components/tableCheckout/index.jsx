@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+
 import {
   getStorageProducts,
   saveStorageProducts,
@@ -57,35 +58,35 @@ class TableCheckout extends Component {
             <tr key={ index + 1 }>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-item-number-${index + 1}`
+                  `customer_checkout__element-order-table-item-number-${index}`
                 }
               >
                 {index + 1 }
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-name-${index + 1}`
+                  `customer_checkout__element-order-table-name-${index}`
                 }
               >
                 {prod.name}
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-quantity-${index + 1}`
+                  `customer_checkout__element-order-table-quantity-${index}`
                 }
               >
                 {prod.quantity}
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-unit-price-${index + 1}`
+                  `customer_checkout__element-order-table-unit-price-${index}`
                 }
               >
                 {prod.price.toString().replace('.', ',')}
               </td>
               <td
                 data-testid={
-                  `customer_checkout__element-order-table-sub-total-${index + 1}`
+                  `customer_checkout__element-order-table-sub-total-${index}`
                 }
               >
                 {((prod.quantity * prod.price).toFixed(2)).toString().replace('.', ',')}
@@ -96,7 +97,7 @@ class TableCheckout extends Component {
                   onClick={ this.removeBtnClick }
                   id={ prod.id }
                   data-testid={
-                    `customer_checkout__element-order-table-remove-${index + 1}`
+                    `customer_checkout__element-order-table-remove-${index}`
                   }
                 >
                   Remover

@@ -34,7 +34,11 @@ class Checkout extends Component {
         <div>
           <TableCheckout changeTotal={ this.changeTotal } />
           <p>Valor Total:</p>
-          <p data-testid="customer_checkout__element-order-total-price">{total}</p>
+          <p
+            data-testid="customer_checkout__element-order-total-price"
+          >
+            {total.toString().replace('.', ',')}
+          </p>
         </div>
         <div>
           <h2>
