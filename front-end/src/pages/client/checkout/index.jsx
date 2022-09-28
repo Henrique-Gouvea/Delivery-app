@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
 import BtnSubmitOrder from '../../../components/btnSubmitOrder';
+import { apiRequestSellers } from '../../../services/api';
+import { getStorageUser } from '../../../helpers/localStorage';
 
 // function Checkout() {
 class Checkout extends Component {
@@ -11,28 +12,36 @@ class Checkout extends Component {
     super(props);
     this.state = {
       total: 0,
+      numberDelivery: 0,
+      adressDelivery: '',
+      sellers: [],
     };
   }
 
   async componentDidMount() {
+    const user = getStorageUser();
+    const sellers = await apiRequestSellers(user.token);
+    console.log(sellers);
     this.setState({
       total: getCartTotal(),
+      sellers,
     });
   }
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ [name]: value });
+  };
 
   changeTotal = (value) => {
     this.setState({ total: value });
   };
 
-  btnSubmitOrder = () => {
-    const navigate = useNavigate();
-    console.log('click');
-    console.log(navigate);
-  };
-
   render() {
     const {
       total,
+      adressDelivery,
+      numberDelivery,
+      sellers,
     } = this.state;
     return (
 
@@ -59,29 +68,35 @@ class Checkout extends Component {
             data-testid="customer_checkout__select-seller"
             name="select"
           >
-            <option value="valor1">Valor 1</option>
-            <option value="valor2" selected>Valor 2</option>
-            <option value="valor3">Valor 3</option>
+            {sellers
+              ? sellers.map((sel) => (
+                <option key={ sel.id } value={ sel.name }>{sel.name}</option>
+              )) : ''}
           </select>
           <p>Endereço</p>
           <input
+            type="text"
+            name="adressDelivery"
             data-testid="customer_checkout__input-address"
+            value={ adressDelivery }
+            onChange={ this.handleChange }
           />
           <p>Numero</p>
           <input
+            type="number"
+            name="numberDelivery"
             data-testid="customer_checkout__input-address-number"
+            min="0"
+            value={ numberDelivery }
+            onChange={ this.handleChange }
           />
         </div>
-        <BtnSubmitOrder />
-        {/* <button
-          type="submit"
-          data-testid="customer_checkout__button-submit-order"
-          onClick={ this.btnSubmitOrder }
-        >
-          Finalizar pedido
-        </button> */}
+        <BtnSubmitOrder
+          total={ total }
+          adressDelivery={ adressDelivery }
+          numberDelivery={ numberDelivery }
+        />
       </div>
-
     );
   }
 }
