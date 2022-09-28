@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
@@ -23,10 +24,11 @@ class Checkout extends Component {
     this.setState({ total: value });
   };
 
-  // btnSubmitOrder = () => {
-  //   console.log('click');
-  //   console.log(history);
-  // };
+  btnSubmitOrder = () => {
+    const navigate = useNavigate();
+    console.log('click');
+    console.log(navigate);
+  };
 
   render() {
     const {
