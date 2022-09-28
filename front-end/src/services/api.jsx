@@ -56,4 +56,4 @@ export const apiRequestSalesDelete = async (token) => (
   request(salesId, 'delete', token));
 
 export const apiRequestSellers = async (token) => (
-  request('/user/seller', 'post', token));
+  request('/user/seller', 'get', token));

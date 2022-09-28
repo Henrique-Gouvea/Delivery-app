@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { getStorageUser } from '../../helpers/localStorage';
 
 function BtnSubmitOrder({ total, adressDelivery, numberDelivery }) {
@@ -24,4 +25,8 @@ function BtnSubmitOrder({ total, adressDelivery, numberDelivery }) {
     </button>
   );
 }
+
+BtnSubmitOrder.propTypes = {
+  numberDelivery: PropTypes.number,
+}.isRequired;
 export default BtnSubmitOrder;
