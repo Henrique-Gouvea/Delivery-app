@@ -24,6 +24,7 @@ const createNewToken = async ({ email, password }) => {
 
   return {
     token,
+    id: user.id,
     name: user.name,
     email: user.email,
     role: user.role,
