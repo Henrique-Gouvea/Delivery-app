@@ -1,13 +1,14 @@
 .page {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
   margin: auto;
-  width: 95%;
+  width: 98%;
 }
 
 .divcards {
   align-content: space-evenly;
-  border: 1px solid red;
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   height: 100%;

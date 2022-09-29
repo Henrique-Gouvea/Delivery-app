@@ -86,6 +86,7 @@ class ProductCard extends Component {
         </div>
         <Link to="/customer/checkout">
           <button
+            className="ver-carrinho"
             type="button"
             data-testid="customer_products__button-cart"
             disabled={ total === '0.00' }

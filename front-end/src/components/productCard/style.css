@@ -1,19 +1,18 @@
 .div-Products {
   align-content: space-evenly;
-  border: 10px solid violet;
+  align-items: center;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  margin: auto;
+  margin: auto 1%;
   width: 98%;
 }
 
-img {
+.ver-carrinho {
+  align-content: center;
   border: 1px solid black;
-  margin: auto;
-  width: 50px;
-}
-
-.productsCard {
-  border: 1px solid green;
+  border-radius: 10px;
+  color: black;
+  margin: auto 35%;
+  width: 30%;
 }
