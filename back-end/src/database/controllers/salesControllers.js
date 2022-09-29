@@ -3,8 +3,6 @@ const { StatusCodes } = require("http-status-codes");
 
 const createSales = async (req, res, next) => {
   try {
-    console.log('===============')
-    console.log(req.body)
     const newSales = req.body;
     const sales = await salesService.createSales(newSales);
 
