@@ -1,4 +1,18 @@
-img {
-  margin: auto;
-  width: 100px;
+.div-Products {
+  align-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: auto 1%;
+  width: 98%;
+}
+
+.ver-carrinho {
+  align-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  color: black;
+  margin: auto 35%;
+  width: 30%;
 }

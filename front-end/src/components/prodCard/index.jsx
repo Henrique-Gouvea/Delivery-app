@@ -4,6 +4,7 @@ import {
   addProductStorage,
   getCartTotal,
 } from '../../helpers/localStorageProducts';
+import './style.css';
 
 class ProdCard extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class ProdCard extends Component {
     });
   }
 
-  incBtnClick = async (prod) => {
+  incBtnClick = (prod) => {
     const { inputQtde } = this.state;
     const quantity = Number(inputQtde) + 1;
     addProductStorage({ ...prod, quantity });
@@ -31,7 +32,7 @@ class ProdCard extends Component {
     changeTotal(getCartTotal());
   };
 
-  decBtnClick = async (prod) => {
+  decBtnClick = (prod) => {
     const { inputQtde } = this.state;
     const { changeTotal } = this.props;
     const quantity = Number(inputQtde - 1);
@@ -73,26 +74,27 @@ class ProdCard extends Component {
     } = this.state;
     const { product } = this.props;
     return (
-      <div>
-        <div>
-          <div>
-            <p
-              data-testid={ `customer_products__element-card-price-${product.id}` }
-            >
-              {product.price.toString().replace('.', ',')}
-            </p>
-            <img
-              data-testid={ `customer_products__img-card-bg-image-${product.id}` }
-              src={ product.url_image }
-              alt={ product.name }
-            />
-          </div>
-          <div>
-            <p
-              data-testid={ `customer_products__element-card-title-${product.id}` }
-            >
-              {product.name}
-            </p>
+      <div className="div-mae">
+        <div className="div-filha">
+          <p
+            data-testid={ `customer_products__element-card-price-${product.id}` }
+          >
+            {product.price.toString().replace('.', ',')}
+          </p>
+          <img
+            data-testid={ `customer_products__img-card-bg-image-${product.id}` }
+            src={ product.url_image }
+            alt={ product.name }
+          />
+        </div>
+        <div className="div-filha">
+          <p
+            data-testid={ `customer_products__element-card-title-${product.id}` }
+          >
+            {product.name}
+          </p>
+          <div className="div-neta">
+
             <button
               data-testid={ `customer_products__button-card-rm-item-${product.id}` }
               type="button"

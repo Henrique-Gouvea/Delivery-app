@@ -1,6 +1,6 @@
 const middlewareErrors = (error, _req, res, _next) => {
-  // console.log("==============================");
-  // console.log("MESSAGE_ERROR", error);
+  console.log("==============================");
+  console.log("MESSAGE_ERROR", error);
 
   const { status, message } = error;
 
