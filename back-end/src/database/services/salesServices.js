@@ -11,11 +11,11 @@ const sequelize = new Sequelize(config[env]);
 
 const salesSchema = Joi.object({
   user_id: Joi.number().required(),
-  seller_id: Joi.number(),
+  seller_id: Joi.number().required(),
   total_price: Joi.number().precision(2).required(),
   delivery_address: Joi.string().required(),
   delivery_number: Joi.number().required(),
-  products: Joi.array(),
+  products: Joi.array().required(),
 });
 
 const createSales = async (sales) => {
