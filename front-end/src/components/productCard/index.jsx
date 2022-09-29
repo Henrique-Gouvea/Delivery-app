@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
@@ -6,7 +8,6 @@ import {
   getStorageProducts,
   getCartTotal,
 } from '../../helpers/localStorageProducts';
-import './style.css';
 import ProdCard from '../prodCard';
 
 const COMPARE_ONE = 1;
