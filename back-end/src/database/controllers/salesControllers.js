@@ -4,7 +4,10 @@ const { StatusCodes } = require("http-status-codes");
 const createSales = async (req, res, next) => {
   try {
     const newSales = req.body;
+    console.log('+++++++++++++++++++++++++++++')
+    console.log('req.body', req.body)
     const sales = await salesService.createSales(newSales);
+    // console.log('SALES', sales);
 
     return res.status(StatusCodes.CREATED).json(sales);
   } catch (error) {

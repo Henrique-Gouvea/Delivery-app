@@ -10,7 +10,7 @@ const auth = (req, _res, next) => {
 
     if (payload.error) return next(payload.error);
 
-    req.token = payload;
+    req.headers.authorization = payload;
 
     next();
   } catch (err) {
