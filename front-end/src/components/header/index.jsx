@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { getStorageUser, clearStorageUser } from '../../helpers/localStorage';
 
@@ -27,38 +29,49 @@ class Header extends Component {
       nameHeader,
     } = this.state;
     return (
-      <header>
-        <div>
+      <header className="nav">
+        <div className="leftItens">
+          <Link to="/customer/products">
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-products"
+            >
+              Produtos
+            </button>
+          </Link>
 
-          <h2
-            data-testid="customer_products__element-navbar-link-products"
-          >
-            Produtos
+          <Link to="/customer/checkout">
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-orders"
+            >
+              Meus Pedidos
+            </button>
+          </Link>
+        </div>
 
-          </h2>
-          <h2
-            data-testid="customer_products__element-navbar-link-orders"
-          >
-            Meus Pedidos
-
-          </h2>
-          <h2
+        <div className="rightItens">
+          <button
+            type="button"
+            className="client"
             data-testid="customer_products__element-navbar-user-full-name"
           >
             {nameHeader}
 
-          </h2>
+          </button>
+
           <Link to="/login">
             <button
               type="button"
+              className="sair"
               data-testid="customer_products__element-navbar-link-logout"
               onClick={ () => clearStorageUser() }
             >
               Sair
             </button>
           </Link>
-
         </div>
+
       </header>
     );
   }
