@@ -6,13 +6,17 @@ const Sequelize = require("sequelize");
 const config = require("../config/config");
 const env = process.env.NODE_ENV || "development";
 const { getById } = require("./productsServices");
+const { now } = require("moment");
 
 const sequelize = new Sequelize(config[env]);
 
 const salesSchema = Joi.object({
   user_id: Joi.number().required(),
   seller_id: Joi.number().required(),
+<<<<<<< HEAD
   total_price: Joi.number().precision(2).required(),
+=======
+>>>>>>> 3a793a8b8d159c85dc9c3f760ae99638f1a0539c
   delivery_address: Joi.string().required(),
   delivery_number: Joi.number().required(),
   products: Joi.array().required(),
@@ -23,6 +27,8 @@ const createSales = async (sales) => {
   const { error } = salesSchema.validate(sales);
   if (error)
     sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
+
+  if(!sales.products) sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
 
   const products = await Promise.all(
     sales.products.map((product) => getById(product.product_id))
@@ -38,7 +44,12 @@ const createSales = async (sales) => {
 
   try {
     const newSales = await Sale.create(
-      { ...sales, total_price: totalValue, status: "Pendente" },
+      {
+        ...sales,
+        total_price: Number(totalValue),
+        status: "Pendente",
+        sale_date: new Date(),
+      },
       { transaction: t }
     );
 
