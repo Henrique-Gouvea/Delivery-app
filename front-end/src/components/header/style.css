@@ -1,6 +1,6 @@
 .nav {
   align-items: center;
-  position: fixed;
+  /* position: fixed; */
   width: 100%;
   height: 75px;
   background-color: #036B52;
