@@ -29,7 +29,7 @@
 }
 
 .alert {
+  color: rgb(255, 0, 0);
   font-size: 14px;
   font-weight: 650;
-  color: rgb(255, 0, 0);
 }

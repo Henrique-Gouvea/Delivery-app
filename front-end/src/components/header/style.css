@@ -1,0 +1,59 @@
+.nav {
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 75px;
+  background-color: #036B52;
+}
+
+/* Add a black background color to the top navigation */
+.leftItens {
+  left: 10px;
+  position: absolute;
+}
+
+/* Style the links inside the navigation bar */
+.leftItens button {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: transparent;
+  border: transparent;
+}
+
+/* Change the color of links on hover */
+.leftItens button:hover {
+  background-color: #2FC18C;
+  color: #001813;
+}
+/* Add a black background color to the top navigation */
+.rightItens {
+  right: 10px;
+  position: absolute;
+}
+
+.rightItens .client{
+  background-color: #421981;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+.rightItens .sair{
+  background-color: #056CF9;
+  color: #ffffff;
+}
+
+/* Style the links inside the navigation bar */
+.rightItens button {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  background-color: transparent;
+  border: transparent;
+}
