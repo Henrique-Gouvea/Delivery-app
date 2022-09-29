@@ -1,9 +1,10 @@
 .nav {
   align-items: center;
+  background-color: #036b52;
+  height: 75px;
+
   /* position: fixed; */
   width: 100%;
-  height: 75px;
-  background-color: #036B52;
 }
 
 .leftItens {
@@ -12,44 +13,45 @@
 }
 
 .leftItens button {
-  float: left;
-  color: #ffffff;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
   background-color: transparent;
   border: transparent;
+  color: white;
+  float: left;
+  font-size: 25px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.rightItens button {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  float: left;
+  font-size: 25px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
 }
 
 .leftItens button:hover {
-  background-color: #2FC18C;
+  background-color: #2fc18c;
   color: #001813;
 }
 
 .rightItens {
-  right: 10px;
   position: absolute;
+  right: 10px;
 }
 
-.rightItens .client{
+.rightItens .client {
   background-color: #421981;
-  color: #ffffff;
+  color: white;
   margin-right: 10px;
 }
 
-.rightItens .sair{
-  background-color: #056CF9;
-  color: #ffffff;
+.rightItens .sair {
+  background-color: #056cf9;
+  color: white;
 }
 
-.rightItens button {
-  float: left;
-  color: #ffffff;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  background-color: transparent;
-  border: transparent;
-}
