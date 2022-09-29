@@ -31,21 +31,23 @@ class Header extends Component {
     return (
       <header className="nav">
         <div className="leftItens">
-          <button
-            type="button"
-            href="/customer/products"
-            data-testid="customer_products__element-navbar-link-products"
-          >
-            Produtos
-          </button>
+          <Link to="/customer/products">
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-products"
+            >
+              Produtos
+            </button>
+          </Link>
 
-          <button
-            type="button"
-            href="/customer/checkout"
-            data-testid="customer_products__element-navbar-link-orders"
-          >
-            Meus Pedidos
-          </button>
+          <Link to="/customer/checkout">
+            <button
+              type="button"
+              data-testid="customer_products__element-navbar-link-orders"
+            >
+              Meus Pedidos
+            </button>
+          </Link>
         </div>
 
         <div className="rightItens">

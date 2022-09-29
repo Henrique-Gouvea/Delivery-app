@@ -6,13 +6,11 @@
   background-color: #036B52;
 }
 
-/* Add a black background color to the top navigation */
 .leftItens {
   left: 10px;
   position: absolute;
 }
 
-/* Style the links inside the navigation bar */
 .leftItens button {
   float: left;
   color: #ffffff;
@@ -24,12 +22,11 @@
   border: transparent;
 }
 
-/* Change the color of links on hover */
 .leftItens button:hover {
   background-color: #2FC18C;
   color: #001813;
 }
-/* Add a black background color to the top navigation */
+
 .rightItens {
   right: 10px;
   position: absolute;
@@ -46,7 +43,6 @@
   color: #ffffff;
 }
 
-/* Style the links inside the navigation bar */
 .rightItens button {
   float: left;
   color: #ffffff;
