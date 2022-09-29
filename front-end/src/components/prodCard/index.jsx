@@ -20,7 +20,7 @@ class ProdCard extends Component {
     });
   }
 
-  incBtnClick = async (prod) => {
+  incBtnClick = (prod) => {
     const { inputQtde } = this.state;
     const quantity = Number(inputQtde) + 1;
     addProductStorage({ ...prod, quantity });
@@ -31,7 +31,7 @@ class ProdCard extends Component {
     changeTotal(getCartTotal());
   };
 
-  decBtnClick = async (prod) => {
+  decBtnClick = (prod) => {
     const { inputQtde } = this.state;
     const { changeTotal } = this.props;
     const quantity = Number(inputQtde - 1);
