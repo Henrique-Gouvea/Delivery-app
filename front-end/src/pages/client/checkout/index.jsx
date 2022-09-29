@@ -15,6 +15,7 @@ class Checkout extends Component {
       numberDelivery: 0,
       adressDelivery: '',
       sellers: [],
+      selected: '',
     };
   }
 
@@ -25,11 +26,16 @@ class Checkout extends Component {
     this.setState({
       total: getCartTotal(),
       sellers,
+      selected: sellers[0].id,
     });
   }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
+  };
+
+  handleChangeSelected = ({ target: { name, key } }) => {
+    this.setState({ [name]: key });
   };
 
   changeTotal = (value) => {
@@ -42,6 +48,7 @@ class Checkout extends Component {
       adressDelivery,
       numberDelivery,
       sellers,
+      selected,
     } = this.state;
     return (
 
@@ -66,7 +73,8 @@ class Checkout extends Component {
           </p>
           <select
             data-testid="customer_checkout__select-seller"
-            name="select"
+            name="selected"
+            onChange={ this.handleChangeSelected }
           >
             {sellers
               ? sellers.map((sel) => (
@@ -95,6 +103,7 @@ class Checkout extends Component {
           total={ total }
           adressDelivery={ adressDelivery }
           numberDelivery={ numberDelivery }
+          selected={ selected }
         />
       </div>
     );
