@@ -11,16 +11,29 @@
   width: 160px;
 }
 
+.div-mae:hover {
+  border: 5px solid;
+  border-color: #036B52;
+}
+
 .input-number {
   height: 30px;
   margin-bottom: 0;
-  text-align: center;
-  width: 55%;
+  text-align: right;
+  width: 35%;
 }
 
 .change-quantity {
+  background-color: #036B52;
+  border-radius: 10px 10px;
+  color: white;
   height: 30px;
   text-align: center;
+  width: 45px;
+}
+
+.change-quantity:hover {
+  background-color: #03bd91;
 }
 
 img {
@@ -38,6 +51,10 @@ img {
   width: 95%;
 }
 
+.card-title {
+  width: 150px;
+}
+
 .div-neta {
   align-content: center;
   align-items: center;
@@ -45,6 +62,6 @@ img {
   flex-flow: row nowrap;
   height: 50px;
   justify-content: space-around;
-  margin: 0 auto 10px;
+  margin: auto;
   width: 100%;
 }
