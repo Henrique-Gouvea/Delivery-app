@@ -5,12 +5,14 @@ import './style.css';
 
 function Products() {
   return (
-    <div className="page">
+    <div>
       <Header />
-      <div className="divcards">
-        <ProductCard
-          className="cards"
-        />
+      <div className="page">
+        <div className="divcards">
+          <ProductCard
+            className="cards"
+          />
+        </div>
       </div>
     </div>
   );

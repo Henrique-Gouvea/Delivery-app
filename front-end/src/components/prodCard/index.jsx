@@ -76,6 +76,9 @@ class ProdCard extends Component {
     return (
       <div className="div-mae">
         <div className="div-filha">
+          <div>
+            R$
+          </div>
           <p
             data-testid={ `customer_products__element-card-price-${product.id}` }
           >
@@ -89,6 +92,7 @@ class ProdCard extends Component {
         </div>
         <div className="div-filha">
           <p
+            className="card-title"
             data-testid={ `customer_products__element-card-title-${product.id}` }
           >
             {product.name}
