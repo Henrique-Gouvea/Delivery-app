@@ -4,28 +4,30 @@
   border-radius: 10px;
   display: flex;
   flex-flow: column nowrap;
-  height: 400px;
-  justify-content: space-evenly;
-  margin: 2.5%;
-  width: 250px;
+  height: 280px;
+  justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+  width: 150px;
 }
 
 input {
-  width: 70%;
+  text-align: center;
+  width: 60%;
 }
 
 img {
-  border: 1px solid black;
+  border: 1px solid gray;
   border-radius: 10px;
+  height: 135px;
   margin: auto;
-  width: 70%;
 }
 
 .div-filha {
   align-items: center;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
   width: 90%;
 }
 
@@ -34,5 +36,6 @@ img {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
+  margin: 0 auto 10px;
   width: 100%;
 }
