@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
@@ -15,7 +17,6 @@ class Checkout extends Component {
       numberDelivery: 0,
       adressDelivery: '',
       sellers: [],
-      selected: '',
     };
   }
 
@@ -26,16 +27,11 @@ class Checkout extends Component {
     this.setState({
       total: getCartTotal(),
       sellers,
-      selected: sellers[0].id,
     });
   }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
-  };
-
-  handleChangeSelected = ({ target: { name, key } }) => {
-    this.setState({ [name]: key });
   };
 
   changeTotal = (value) => {
@@ -48,63 +44,69 @@ class Checkout extends Component {
       adressDelivery,
       numberDelivery,
       sellers,
-      selected,
     } = this.state;
     return (
 
       <div>
         <Header />
-        <h2>Finalizar Pedido</h2>
-        <div>
+        <div className="principal">
+
+          <h2 className="finalizarPedido">Finalizar Pedido</h2>
           <TableCheckout changeTotal={ this.changeTotal } />
-          <p>Valor Total:</p>
-          <p
-            data-testid="customer_checkout__element-order-total-price"
-          >
-            {total.toString().replace('.', ',')}
-          </p>
-        </div>
-        <div>
-          <h2>
-            Detalhes e Endereço de entrega
-          </h2>
-          <p>
-            Vendedor responsabel
-          </p>
-          <select
-            data-testid="customer_checkout__select-seller"
-            name="selected"
-            onChange={ this.handleChangeSelected }
-          >
-            {sellers
-              ? sellers.map((sel) => (
-                <option key={ sel.id } value={ sel.name }>{sel.name}</option>
-              )) : ''}
-          </select>
-          <p>Endereço</p>
-          <input
-            type="text"
-            name="adressDelivery"
-            data-testid="customer_checkout__input-address"
-            value={ adressDelivery }
-            onChange={ this.handleChange }
+
+          <div>
+            <div className="total">
+              <div>Total: R$</div>
+              <div
+                data-testid="customer_checkout__element-order-total-price"
+              >
+                {total.toString().replace('.', ',')}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="detalhes">
+              Detalhes e Endereço de entrega
+            </h2>
+            <div className="endereco">
+              <div>
+                Vendedor responsabel
+              </div>
+              <select
+                data-testid="customer_checkout__select-seller"
+                name="select"
+              >
+                {sellers
+                  ? sellers.map((sel) => (
+                    <option key={ sel.id } value={ sel.name }>{sel.name}</option>
+                  )) : ''}
+              </select>
+              <div>Endereço</div>
+              <input
+                type="text"
+                name="adressDelivery"
+                data-testid="customer_checkout__input-address"
+                value={ adressDelivery }
+                onChange={ this.handleChange }
+              />
+              <div>Número</div>
+              <input
+                type="number"
+                name="numberDelivery"
+                data-testid="customer_checkout__input-address-number"
+                min="0"
+                value={ numberDelivery }
+                onChange={ this.handleChange }
+              />
+            </div>
+          </div>
+          <BtnSubmitOrder
+            total={ total }
+            adressDelivery={ adressDelivery }
+            numberDelivery={ numberDelivery }
           />
-          <p>Numero</p>
-          <input
-            type="number"
-            name="numberDelivery"
-            data-testid="customer_checkout__input-address-number"
-            min="0"
-            value={ numberDelivery }
-            onChange={ this.handleChange }
-          />
         </div>
-        <BtnSubmitOrder
-          total={ total }
-          adressDelivery={ adressDelivery }
-          numberDelivery={ numberDelivery }
-          selected={ selected }
-        />
       </div>
     );
   }
