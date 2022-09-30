@@ -18,9 +18,13 @@ class OrdersDetails extends Component {
   }
 
   componentDidMount() {
-    const orderDetails = getStorageOrder();
+    const orderDetailsStorage = getStorageOrder();
+    // const id = GetIdRoute();
+    const url = window.location.pathname;
+    const id = url.substring(url.lastIndexOf('/') + 1);
+    const orderDetails = orderDetailsStorage.find((ord) => Number(ord.id) === Number(id));
     this.setState({
-      orderDetails: orderDetails[orderDetails.length - 1],
+      orderDetails,
     });
   }
 

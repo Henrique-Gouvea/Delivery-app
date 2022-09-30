@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getStorageOrder } from '../../helpers/localStorageOrderDdetails';
 
 class OrdersCard extends Component {
@@ -31,29 +32,30 @@ class OrdersCard extends Component {
     return (
       <div>
         {orders ? orders.map((ord) => (
-          <div key={ ord.id }>
-            <p
-              data-testid={ `customer_orders__element-order-id-${ord.id}` }
-            >
-              {ord.id}
-            </p>
-            <p
-              data-testid={ `customer_orders__element-delivery-status-${ord.id}` }
-            >
-              {ord.status}
-            </p>
-            <p
-              data-testid={ `customer_orders__element-order-date-${ord.id}` }
-            >
-              {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
-            </p>
-            <p
-              data-testid={ `customer_orders__element-card-price-${ord.id}` }
-            >
-              {ord.total_price.toString().replace('.', ',')}
-            </p>
-
-          </div>
+          <Link to={ `/customer/orders/${ord.id}` } key={ ord.id }>
+            <div>
+              <p
+                data-testid={ `customer_orders__element-order-id-${ord.id}` }
+              >
+                {ord.id}
+              </p>
+              <p
+                data-testid={ `customer_orders__element-delivery-status-${ord.id}` }
+              >
+                {ord.status}
+              </p>
+              <p
+                data-testid={ `customer_orders__element-order-date-${ord.id}` }
+              >
+                {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
+              </p>
+              <p
+                data-testid={ `customer_orders__element-card-price-${ord.id}` }
+              >
+                {ord.total_price.toString().replace('.', ',')}
+              </p>
+            </div>
+          </Link>
         )) : ''}
       </div>
     );
