@@ -13,7 +13,7 @@
 
 .div-mae:hover {
   border: 5px solid;
-  border-color: #036B52;
+  border-color: #036b52;
 }
 
 .input-number {
@@ -24,8 +24,8 @@
 }
 
 .change-quantity {
-  background-color: #036B52;
-  border-radius: 10px 10px;
+  background-color: #036b52;
+  border-radius: 10px;
   color: white;
   height: 30px;
   text-align: center;
