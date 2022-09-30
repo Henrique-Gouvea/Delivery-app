@@ -18,7 +18,6 @@ class TableCheckout extends Component {
 
   componentDidMount() {
     const products = getStorageProducts();
-    console.log(products);
     this.setState({
       products,
     });

@@ -2,37 +2,36 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getStorageUser } from '../../helpers/localStorage';
-import { getStorageProducts } from '../../helpers/localStorageProducts';
+import { getStorageProducts, removeProducts } from '../../helpers/localStorageProducts';
+import { saveStorageOrder } from '../../helpers/localStorageOrderDdetails';
 import { apiRequestSalesPost } from '../../services/api';
 
-function BtnSubmitOrder({ adressDelivery, numberDelivery, selected }) {
+function BtnSubmitOrder({ total, adressDelivery, numberDelivery, selected }) {
   const navigate = useNavigate();
 
   const createSales = async (createSalesOrder, token) => {
     const result = await apiRequestSalesPost(createSalesOrder, token);
-    console.log(result);
-    return result.id;
+    return result;
   };
 
   const clickSubmitOrder = async () => {
     const user = getStorageUser();
     const products = getStorageProducts();
-    const teste = selected || 2;
-    console.log(selected);
+    const teste = selected.key || 2;
     const productsIdQuantity = products.map((product) => ({
       product_id: product.id, quantity: product.quantity,
     }));
     const createSalesOrder = {
       user_id: Number(user.id),
       seller_id: Number(teste),
-      // total_price: Number(total),
       delivery_address: adressDelivery,
       delivery_number: Number(numberDelivery),
       products: productsIdQuantity,
     };
-    console.log(createSalesOrder);
-    const id = await createSales(createSalesOrder, user.token);
-    navigate(`/customer/orders/${id}`);
+    const detailOder = await createSales(createSalesOrder, user.token);
+    saveStorageOrder({ ...detailOder, products, seller_name: selected.value, total });
+    removeProducts();
+    navigate(`/customer/orders/${detailOder.id}`);
   };
 
   return (
