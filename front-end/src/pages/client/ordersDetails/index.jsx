@@ -7,6 +7,7 @@ import {
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
+const dataTstID = 'customer_order_details__element-order-details-label-delivery-status';
 // function OrdersDetails() {
 class OrdersDetails extends Component {
   constructor(props) {
@@ -79,10 +80,7 @@ class OrdersDetails extends Component {
             {orderDetails.sale_date ? this.convertDate(orderDetails.sale_date) : ''}
           </p>
           <p
-            data-testid={ (
-              `customer_order_details__element
-            -order-details-label-delivery-status`
-            ) }
+            data-testid={ dataTstID }
           >
             {orderDetails.status}
           </p>
@@ -91,6 +89,7 @@ class OrdersDetails extends Component {
             type="button"
             id={ orderDetails.id }
             onClick={ this.btnDeliveryCheck }
+            disabled={ orderDetails.status === 'Entregue' }
           >
             Marcar como entregue
           </button>
