@@ -1,0 +1,27 @@
+.principal {
+  margin: 20px;
+}
+
+.finalizarPedido {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.total {
+  background-color: #036B52;
+  color: rgb(255, 255, 255);
+  display: inline-block;
+  text-align: center;
+  margin-left: 70.5%;
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 250px;
+}
+
+.detalhes {
+  margin-bottom: 20px;
+}
+
+.endereco select, input {
+  margin-bottom: 20px;
+}
