@@ -50,7 +50,7 @@ class OrdersCard extends Component {
             <p
               data-testid={ `customer_orders__element-card-price-${ord.id}` }
             >
-              {ord.total_price}
+              {ord.total_price.toString().replace('.', ',')}
             </p>
 
           </div>

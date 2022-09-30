@@ -89,7 +89,7 @@ class OrdersDetails extends Component {
             type="button"
             id={ orderDetails.id }
             onClick={ this.btnDeliveryCheck }
-            disabled={ orderDetails.status === 'Entregue' }
+            disabled={ orderDetails.status !== 'Em Trânsito' }
           >
             Marcar como entregue
           </button>
@@ -100,7 +100,7 @@ class OrdersDetails extends Component {
           <p
             data-testid="customer_order_details__element-order-total-price"
           >
-            {orderDetails.total}
+            {orderDetails.total ? orderDetails.total.toString().replace('.', ',') : ''}
           </p>
         </div>
       </div>

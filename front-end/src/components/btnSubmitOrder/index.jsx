@@ -18,6 +18,7 @@ function BtnSubmitOrder({ total, adressDelivery, numberDelivery, selected }) {
     const user = getStorageUser();
     const products = getStorageProducts();
     const teste = selected.key || 2;
+    const teste2 = selected.value || 'Fulana Pereira';
     const productsIdQuantity = products.map((product) => ({
       product_id: product.id, quantity: product.quantity,
     }));
@@ -29,7 +30,7 @@ function BtnSubmitOrder({ total, adressDelivery, numberDelivery, selected }) {
       products: productsIdQuantity,
     };
     const detailOder = await createSales(createSalesOrder, user.token);
-    addOrdertorage({ ...detailOder, products, seller_name: selected.value, total });
+    addOrdertorage({ ...detailOder, products, seller_name: teste2, total });
     removeProducts();
     navigate(`/customer/orders/${detailOder.id}`);
   };

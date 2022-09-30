@@ -61,7 +61,7 @@ class Checkout extends Component {
           <p
             data-testid="customer_checkout__element-order-total-price"
           >
-            {total.toString().replace('.', ',')}
+            {total ? total.toString().replace('.', ',') : ''}
           </p>
         </div>
         <div>
