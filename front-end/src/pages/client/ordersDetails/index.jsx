@@ -19,6 +19,14 @@ class OrdersDetails extends Component {
     });
   }
 
+  convertDate = (date) => {
+    const VALUE_REMOVED_DATE = 10;
+    const removedDate = date.substr(0, VALUE_REMOVED_DATE);
+    const dateFormatted = removedDate.split('-').reverse().join('/');
+    console.log(dateFormatted);
+    return dateFormatted;
+  };
+
   render() {
     const {
       orderDetails,
@@ -41,7 +49,7 @@ class OrdersDetails extends Component {
           <p
             data-testid="customer_order_details__element-order-details-label-order-date"
           >
-            {orderDetails.sale_date}
+            {orderDetails ? this.convertDate(orderDetails.sale_date) : ''}
           </p>
           <p
             data-testid={ (
