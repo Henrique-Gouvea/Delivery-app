@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getStorageUser } from '../../helpers/localStorage';
 import { getStorageProducts, removeProducts } from '../../helpers/localStorageProducts';
-import { saveStorageOrder } from '../../helpers/localStorageOrderDdetails';
+import { addOrdertorage } from '../../helpers/localStorageOrderDdetails';
 import { apiRequestSalesPost } from '../../services/api';
 
 function BtnSubmitOrder({ total, adressDelivery, numberDelivery, selected }) {
@@ -29,7 +29,7 @@ function BtnSubmitOrder({ total, adressDelivery, numberDelivery, selected }) {
       products: productsIdQuantity,
     };
     const detailOder = await createSales(createSalesOrder, user.token);
-    saveStorageOrder({ ...detailOder, products, seller_name: selected.value, total });
+    addOrdertorage({ ...detailOder, products, seller_name: selected.value, total });
     removeProducts();
     navigate(`/customer/orders/${detailOder.id}`);
   };

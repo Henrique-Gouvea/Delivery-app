@@ -40,7 +40,7 @@ class Header extends Component {
             </button>
           </Link>
 
-          <Link to="/customer/checkout">
+          <Link to="/customer/orders">
             <button
               type="button"
               data-testid="customer_products__element-navbar-link-orders"

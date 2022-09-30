@@ -15,7 +15,7 @@ class OrdersDetails extends Component {
   componentDidMount() {
     const orderDetails = getStorageOrder();
     this.setState({
-      orderDetails,
+      orderDetails: orderDetails[orderDetails.length - 1],
     });
   }
 
@@ -49,7 +49,7 @@ class OrdersDetails extends Component {
           <p
             data-testid="customer_order_details__element-order-details-label-order-date"
           >
-            {orderDetails ? this.convertDate(orderDetails.sale_date) : ''}
+            {orderDetails.sale_date ? this.convertDate(orderDetails.sale_date) : ''}
           </p>
           <p
             data-testid={ (
