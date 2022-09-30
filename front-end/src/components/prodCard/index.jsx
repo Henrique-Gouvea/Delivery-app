@@ -96,6 +96,7 @@ class ProdCard extends Component {
           <div className="div-neta">
 
             <button
+              className="change-quantity"
               data-testid={ `customer_products__button-card-rm-item-${product.id}` }
               type="button"
               id={ product.id }
@@ -104,6 +105,7 @@ class ProdCard extends Component {
               -
             </button>
             <input
+              className="input-number"
               data-testid={ `customer_products__input-card-quantity-${product.id}` }
               id={ product.id }
               onChange={ this.handleChange }
@@ -112,6 +114,7 @@ class ProdCard extends Component {
               min="0"
             />
             <button
+              className="change-quantity"
               data-testid={ `customer_products__button-card-add-item-${product.id}` }
               type="button"
               id={ product.id }
