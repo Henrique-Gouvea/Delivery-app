@@ -37,6 +37,12 @@ export const apiRequestLogin = async (user) => (
 export const apiRequestCadaster = async (user) => (
   request('/user', 'post', user));
 
+export const apiRequestCadasterWithToken = async (user, token) => (
+  requestPostToken('/admin', 'post', user, token));
+
+export const apiRequestUserGetAll = async () => (
+  request('/user', 'get'));
+
 export const apiRequestProductsGetAll = async (token) => (
   request('/products', 'get', token));
 

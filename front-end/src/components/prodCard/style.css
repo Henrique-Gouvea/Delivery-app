@@ -1,0 +1,50 @@
+.div-mae {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 310px;
+  justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+  width: 160px;
+}
+
+.input-number {
+  height: 30px;
+  margin-bottom: 0;
+  text-align: center;
+  width: 55%;
+}
+
+.change-quantity {
+  height: 30px;
+  text-align: center;
+}
+
+img {
+  border: 1px solid gray;
+  border-radius: 10px;
+  height: 135px;
+  margin: auto;
+}
+
+.div-filha {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 95%;
+}
+
+.div-neta {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 50px;
+  justify-content: space-around;
+  margin: 0 auto 10px;
+  width: 100%;
+}

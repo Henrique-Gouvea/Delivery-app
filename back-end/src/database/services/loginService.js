@@ -10,7 +10,7 @@ const loginSchema = Joi.object({
   password: Joi.string().required(),
 });
 
-const createNewToken = async ({ email, password }) => {
+const createNewToken = async ({ email, password, role }) => {
   const { error } = loginSchema.validate({ email, password });
   if (error) sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
 
@@ -20,14 +20,14 @@ const createNewToken = async ({ email, password }) => {
   const passHash = encryptPassword(password);
   checkPassword(passHash, user.password);
 
-  const token = createToken({ email: user.email, password: user.password });
+  const token = createToken({ email: user.email, password: user.password, role: user.role || 'customer' });
 
   return {
     token,
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.role,
+    role: user.role || 'customer',
   };
 };
 

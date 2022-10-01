@@ -4,7 +4,9 @@ const { StatusCodes } = require("http-status-codes");
 const createToken = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const user = await loginService.createNewToken({ email, password });
+    // const { authorization } = req.headers;
+    const { role } = req.body || 'customer';
+    const user = await loginService.createNewToken({ email, password, role });
 
     if (user.error) return next(user.error);
 

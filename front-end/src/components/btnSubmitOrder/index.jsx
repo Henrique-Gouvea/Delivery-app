@@ -1,4 +1,6 @@
 import React from 'react';
+import './style.css';
+
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { getStorageUser } from '../../helpers/localStorage';
@@ -17,6 +19,7 @@ function BtnSubmitOrder({ total, adressDelivery, numberDelivery }) {
 
   return (
     <button
+      className="finalizar"
       type="submit"
       data-testid="customer_checkout__button-submit-order"
       onClick={ clickSubmitOrder }

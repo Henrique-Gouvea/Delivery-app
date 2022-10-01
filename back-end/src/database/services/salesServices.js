@@ -77,10 +77,10 @@ const findByID = async (id) => {
 };
 
 const updateSale = async (id, sale) => {
-  const { error } = salesSchema.validate(sale);
+  // const { error } = salesSchema.validate(sale);
 
-  if (error)
-    sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
+  // if (error)
+  //   sendError(StatusCodes.BAD_REQUEST, "Some required fields are missing");
   if (!findByID(id)) sendError(StatusCodes.NOT_FOUND, "Sale not found");
 
   const saleUpdated = await Sale.update(sale, { where: { id } });

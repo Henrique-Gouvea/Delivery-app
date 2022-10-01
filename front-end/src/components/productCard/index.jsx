@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { apiRequestProductsGetAll } from '../../services/api';
 import { getStorageUser } from '../../helpers/localStorage';
@@ -6,9 +8,7 @@ import {
   getStorageProducts,
   getCartTotal,
 } from '../../helpers/localStorageProducts';
-import './style.css';
 import ProdCard from '../prodCard';
-
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
@@ -74,16 +74,20 @@ class ProductCard extends Component {
     } = this.state;
     return (
       <div>
-        {products ? (
-          products.map((prod, index) => (
-            <ProdCard
-              key={ index }
-              product={ prod }
-              changeTotal={ this.changeTotal }
-              updateProducts={ this.updateProducts }
-            />))) : ''}
+        <div className="div-Products">
+          {products ? (
+            products.map((prod, index) => (
+              <ProdCard
+                className="productsCard"
+                key={ index }
+                product={ prod }
+                changeTotal={ this.changeTotal }
+                updateProducts={ this.updateProducts }
+              />))) : ''}
+        </div>
         <Link to="/customer/checkout">
           <button
+            className="ver-carrinho"
             type="button"
             data-testid="customer_products__button-cart"
             disabled={ total === '0.00' }

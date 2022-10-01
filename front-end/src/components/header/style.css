@@ -1,0 +1,54 @@
+.nav {
+  align-items: center;
+  background-color: #036b52;
+  height: 75px;
+  width: 100%;
+}
+
+.leftItens {
+  left: 10px;
+  position: absolute;
+}
+
+.leftItens button {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  float: left;
+  font-size: 25px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.rightItens button {
+  background-color: transparent;
+  border: transparent;
+  color: white;
+  float: left;
+  font-size: 25px;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.leftItens button:hover {
+  background-color: #2fc18c;
+  color: #001813;
+}
+
+.rightItens {
+  position: absolute;
+  right: 10px;
+}
+
+.rightItens .client {
+  background-color: #421981;
+  color: white;
+  margin-right: 10px;
+}
+
+.rightItens .sair {
+  background-color: #056cf9;
+  color: white;
+}
