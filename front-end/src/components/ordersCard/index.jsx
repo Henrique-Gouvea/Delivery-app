@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { getStorageOrder } from '../../helpers/localStorageOrderDdetails';
 
@@ -30,10 +32,10 @@ class OrdersCard extends Component {
       orders,
     } = this.state;
     return (
-      <div>
+      <div className="div-mae-order">
         {orders ? orders.map((ord) => (
           <Link to={ `/customer/orders/${ord.id}` } key={ ord.id }>
-            <div>
+            <div className="div-filha-order">
               <p
                 data-testid={ `customer_orders__element-order-id-${ord.id}` }
               >

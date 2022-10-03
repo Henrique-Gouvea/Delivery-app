@@ -1,0 +1,25 @@
+.div-mae-order {
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 310px;
+  justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+  width: 160px;
+}
+
+.div-mae-order:hover {
+  border: 5px solid;
+  border-color: #036b52;
+}
+
+.div-filha-order {
+  align-items: center;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  width: 95%;
+}
