@@ -36,7 +36,7 @@ function Manage() {
 
   useEffect(() => {
     const { email, password, name } = newUser;
-    const emailRegex = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i;
+    const emailRegex = /\S+@\S+\.\S+/;
     const passwordMinLength = 6;
     const nameMinLength = 12;
 
@@ -58,20 +58,28 @@ function Manage() {
       password: '',
     });
 
+    const emailUsers = allUsers.map((ele) => ele.email);
+
+    if (emailUsers.includes(newUser.email)) {
+      setUserExist(true);
+    }
+
     const resultado = await apiRequestUserGetAll();
-    const noAdmin = resultado.filter((elem) => elem.role !== 'administrator');
-    setallUsers([...noAdmin, newUser]);
+    const usersDB = resultado.filter((elem) => elem.role !== 'administrator');
+
+    if (emailUsers.includes(newUser.email)) {
+      setallUsers([...usersDB]);
+    } else {
+      setallUsers([...usersDB, newUser]);
+    }
 
     const { token, role } = getStorageUser();
     if (!token) return false;
 
-    console.log(token);
-
     apiRequestCadasterWithToken({ newUser, role }, token)
-      .then((result) => (!result ? setUserExist(true) : setUserExist(false)))
+      .then((result) => result)
       .catch((error) => {
         console.log(error.message);
-        setUserExist(true);
       });
   };
 
