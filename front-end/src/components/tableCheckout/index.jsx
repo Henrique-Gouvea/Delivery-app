@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './style.css';
 
 import {
   getStorageProducts,
@@ -41,7 +42,7 @@ class TableCheckout extends Component {
       products,
     } = this.state;
     return (
-      <table>
+      <table className="customers">
         <thead>
           <tr>
             <th>Item</th>
@@ -70,6 +71,7 @@ class TableCheckout extends Component {
                 {prod.name}
               </td>
               <td
+                className="quantidade"
                 data-testid={
                   `customer_checkout__element-order-table-quantity-${index}`
                 }
@@ -77,6 +79,7 @@ class TableCheckout extends Component {
                 {prod.quantity}
               </td>
               <td
+                className="valorUnit"
                 data-testid={
                   `customer_checkout__element-order-table-unit-price-${index}`
                 }
@@ -84,6 +87,7 @@ class TableCheckout extends Component {
                 {prod.price.toString().replace('.', ',')}
               </td>
               <td
+                className="subTotal"
                 data-testid={
                   `customer_checkout__element-order-table-sub-total-${index}`
                 }
@@ -93,6 +97,7 @@ class TableCheckout extends Component {
               <td>
                 <button
                   type="button"
+                  className="remover"
                   onClick={ this.removeBtnClick }
                   id={ prod.id }
                   data-testid={

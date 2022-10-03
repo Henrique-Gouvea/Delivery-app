@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './style.css';
 
 function TableOrders({ products }) {
   return (
-    <table>
+    <table className="tableOrders">
       <thead>
         <tr>
           <th>Item</th>
@@ -31,6 +32,7 @@ function TableOrders({ products }) {
               {prod.name}
             </td>
             <td
+              className="quantidade"
               data-testid={
                 `customer_order_details__element-order-table-quantity-${index}`
               }
@@ -38,6 +40,7 @@ function TableOrders({ products }) {
               {prod.quantity}
             </td>
             <td
+              className="valorUnit"
               data-testid={
                 `customer_order_details__element-order-table-unit-price-${index}`
               }
@@ -45,6 +48,7 @@ function TableOrders({ products }) {
               {prod.price.toString().replace('.', ',')}
             </td>
             <td
+              className="subTotal"
               data-testid={
                 `customer_order_details__element-order-table-sub-total-${index}`
               }

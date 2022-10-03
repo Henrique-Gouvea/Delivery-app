@@ -94,6 +94,7 @@ class ProductCard extends Component {
           >
             Ver Carrinho: R$
             <p
+              className="valor-carrinho"
               data-testid="customer_products__checkout-bottom-value"
             >
               { total.toString().replace('.', ',') }

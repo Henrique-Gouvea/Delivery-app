@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import Header from '../../../components/header';
 import TableCheckout from '../../../components/tableCheckout';
 import { getCartTotal } from '../../../helpers/localStorageProducts';
@@ -54,64 +56,71 @@ class Checkout extends Component {
 
       <div>
         <Header />
-        <h2>Finalizar Pedido</h2>
-        <div>
-          <TableCheckout changeTotal={ this.changeTotal } />
-          <p>Valor Total:</p>
-          <p
-            data-testid="customer_checkout__element-order-total-price"
-          >
-            {total ? total.toString().replace('.', ',') : ''}
-          </p>
-        </div>
-        <div>
-          <h2>
-            Detalhes e Endereço de entrega
-          </h2>
-          <p>
-            Vendedor responsabel
-          </p>
-          <select
-            data-testid="customer_checkout__select-seller"
-            name="selected"
-            onChange={ this.handleChangeSelected }
-          >
-            {sellers
-              ? sellers.map((sel) => (
-                <option
-                  name="selected"
-                  key={ sel.id }
-                  value={ sel.name }
-                >
-                  {sel.name}
+        <div className="principal">
 
-                </option>
-              )) : ''}
-          </select>
-          <p>Endereço</p>
-          <input
-            type="text"
-            name="adressDelivery"
-            data-testid="customer_checkout__input-address"
-            value={ adressDelivery }
-            onChange={ this.handleChange }
-          />
-          <p>Numero</p>
-          <input
-            type="number"
-            name="numberDelivery"
-            data-testid="customer_checkout__input-address-number"
-            min="0"
-            value={ numberDelivery }
-            onChange={ this.handleChange }
+          <h2 className="finalizarPedido">Finalizar Pedido</h2>
+          <TableCheckout changeTotal={ this.changeTotal } />
+
+          <div>
+            <div className="total">
+              <div>Total: R$</div>
+              <div
+                data-testid="customer_checkout__element-order-total-price"
+              >
+                {total.toString().replace('.', ',')}
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2 className="detalhes">
+              Detalhes e Endereço de entrega
+            </h2>
+            <div className="endereco">
+              <div>
+                Vendedor responsabel
+              </div>
+              <select
+                data-testid="customer_checkout__select-seller"
+                name="selected"
+                onChange={ this.handleChangeSelected }
+              >
+                {sellers
+                  ? sellers.map((sel) => (
+                    <option
+                      name="selected"
+                      key={ sel.id }
+                      value={ sel.name }
+                    >
+                      {sel.name}
+                    </option>
+                  )) : ''}
+              </select>
+              <div>Endereço</div>
+              <input
+                type="text"
+                name="adressDelivery"
+                data-testid="customer_checkout__input-address"
+                value={ adressDelivery }
+                onChange={ this.handleChange }
+              />
+              <p>Número</p>
+              <input
+                type="number"
+                name="numberDelivery"
+                data-testid="customer_checkout__input-address-number"
+                min="0"
+                value={ numberDelivery }
+                onChange={ this.handleChange }
+              />
+            </div>
+          </div>
+          <BtnSubmitOrder
+            total={ total }
+            adressDelivery={ adressDelivery }
+            numberDelivery={ numberDelivery }
+            selected={ selected }
           />
         </div>
-        <BtnSubmitOrder
-          total={ total }
-          adressDelivery={ adressDelivery }
-          numberDelivery={ numberDelivery }
-          selected={ selected }
-        />
       </div>
     );
   }
