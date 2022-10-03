@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './style.css';
+
 import {
   addProductStorage,
   getCartTotal,
 } from '../../helpers/localStorageProducts';
-import './style.css';
 
 class ProdCard extends Component {
   constructor(props) {
@@ -90,6 +91,7 @@ class ProdCard extends Component {
             alt={ product.name }
           />
         </div>
+
         <div className="div-filha">
           <p
             className="card-title"

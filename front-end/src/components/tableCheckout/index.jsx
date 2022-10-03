@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './style.css';
 import PropTypes from 'prop-types';
+import './style.css';
 
 import {
   getStorageProducts,
@@ -19,7 +19,6 @@ class TableCheckout extends Component {
 
   componentDidMount() {
     const products = getStorageProducts();
-    console.log(products);
     this.setState({
       products,
     });

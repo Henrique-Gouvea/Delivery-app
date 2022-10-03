@@ -17,6 +17,7 @@ class Checkout extends Component {
       numberDelivery: 0,
       adressDelivery: '',
       sellers: [],
+      selected: '',
     };
   }
 
@@ -27,11 +28,16 @@ class Checkout extends Component {
     this.setState({
       total: getCartTotal(),
       sellers,
+      selected: { key: sellers[0].id, value: sellers[0].name },
     });
   }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ [name]: value });
+  };
+
+  handleChangeSelected = ({ target: { name, key, value } }) => {
+    this.setState({ [name]: { key, value } });
   };
 
   changeTotal = (value) => {
@@ -44,6 +50,7 @@ class Checkout extends Component {
       adressDelivery,
       numberDelivery,
       sellers,
+      selected,
     } = this.state;
     return (
 
@@ -64,7 +71,6 @@ class Checkout extends Component {
               </div>
             </div>
           </div>
-
           <div>
             <h2 className="detalhes">
               Detalhes e Endereço de entrega
@@ -75,11 +81,18 @@ class Checkout extends Component {
               </div>
               <select
                 data-testid="customer_checkout__select-seller"
-                name="select"
+                name="selected"
+                onChange={ this.handleChangeSelected }
               >
                 {sellers
                   ? sellers.map((sel) => (
-                    <option key={ sel.id } value={ sel.name }>{sel.name}</option>
+                    <option
+                      name="selected"
+                      key={ sel.id }
+                      value={ sel.name }
+                    >
+                      {sel.name}
+                    </option>
                   )) : ''}
               </select>
               <div>Endereço</div>
@@ -90,7 +103,7 @@ class Checkout extends Component {
                 value={ adressDelivery }
                 onChange={ this.handleChange }
               />
-              <div>Número</div>
+              <p>Número</p>
               <input
                 type="number"
                 name="numberDelivery"
@@ -105,6 +118,7 @@ class Checkout extends Component {
             total={ total }
             adressDelivery={ adressDelivery }
             numberDelivery={ numberDelivery }
+            selected={ selected }
           />
         </div>
       </div>

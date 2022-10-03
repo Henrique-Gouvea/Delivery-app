@@ -1,0 +1,54 @@
+.tableOrders {
+  border-collapse: collapse;
+  font-family: Arial , Helvetica , sans-serif;
+  width: 100%;
+}
+
+.tableOrders td, .tableOrders th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tableOrders tr:nth-child( even ) {
+  background-color: #f2f2f2;
+}
+
+.tableOrders tr:hover { background-color: #ddd;}
+
+.tableOrders th {
+  background-color: #1da171;
+  color: white;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.quantidade {
+  background-color: #036b52;
+  color: white;
+  text-align: center;
+}
+
+.quantidade:hover {
+  background-color: #018566;
+}
+
+.valorUnit {
+  background-color: #421981;
+  color: white;
+  text-align: center;
+}
+
+.valorUnit:hover {
+  background-color: #501f99;
+}
+
+.subTotal {
+  background-color: #056cf9;
+  color: white;
+  text-align: center;
+}
+
+.subTotal:hover {
+  background-color: #2881fd;
+}

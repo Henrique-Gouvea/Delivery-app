@@ -9,9 +9,7 @@ function Products() {
       <Header />
       <div className="page">
         <div className="divcards">
-          <ProductCard
-            className="cards"
-          />
+          <ProductCard />
         </div>
       </div>
     </div>
