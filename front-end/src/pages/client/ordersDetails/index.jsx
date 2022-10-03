@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-max-depth */
 import React, { Component } from 'react';
 import './style.css';
 
@@ -74,51 +73,25 @@ class OrdersDetails extends Component {
         <Header />
         <div className="div-principal">
           <h2 className="detalhePedido">Detalhe do pedido</h2>
-          <div>
-            <table className="user">
-              <thead>
-                <tr>
-                  <th>
-                    id
-                  </th>
-                  <th>
-                    Vendedor
-                  </th>
-                  <th>
-                    Data
-                  </th>
-                  <th>
-                    Status
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td
-                    data-testid={ orderId }
-                  >
-                    {orderDetails.id}
-                  </td>
-                  <td
-                    data-testid={ sallerName }
-                  >
-                    {orderDetails.seller_name}
-                  </td>
-                  <td
-                    data-testid={ orderDate }
-                  >
-                    {orderDetails.sale_date
-                      ? this.convertDate(orderDetails.sale_date) : ''}
-                  </td>
-                  <td
-                    data-testid={ dataTstID }
-                  >
-                    {orderDetails.status}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table className="user">
+            <thead>
+              <th>id</th>
+              <th>Vendedor</th>
+              <th>Data</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <td data-testid={ orderId }>{orderDetails.id}</td>
+              <td data-testid={ sallerName }>{orderDetails.seller_name}</td>
+              <td
+                data-testid={ orderDate }
+              >
+                {orderDetails.sale_date
+                  ? this.convertDate(orderDetails.sale_date) : ''}
+              </td>
+              <td data-testid={ dataTstID }>{orderDetails.status}</td>
+            </tbody>
+          </table>
           <button
             className="marcarButton"
             data-testid="customer_order_details__button-delivery-check"
