@@ -2,8 +2,6 @@
   align-items: center;
   background-color: #036b52;
   height: 75px;
-
-  /* position: fixed; */
   width: 100%;
 }
 
@@ -54,4 +52,3 @@
   background-color: #056cf9;
   color: white;
 }
-

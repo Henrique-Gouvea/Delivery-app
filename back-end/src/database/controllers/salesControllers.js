@@ -42,10 +42,10 @@ const updateSale = async (req, res, next) => {
   try {
     const { id } = req.params;
     const upSale = req.body;
-    const sale = await salesService.updateSale(id, upSale);
+    // const sale = await salesService.updateSale(id, upSale);
 
-    if (sale.error) return next(sale.error);
-    return res.status(StatusCodes.OK).json(sale);
+    await salesService.updateSale(id, upSale)
+    return res.status(StatusCodes.OK).json(upSale);
   } catch (error) {
     next(error);
   }
