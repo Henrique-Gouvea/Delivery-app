@@ -1,14 +1,14 @@
 .div-mae-order {
   align-items: center;
   border: 1px solid black;
-  border-radius: 10px;
-  display: flex;
+  /* border-radius: 10px; */
+  display: inline-block;
   flex-flow: column nowrap;
-  height: 310px;
+  height: 160px;
   justify-content: space-between;
   margin: 5px;
   text-align: center;
-  width: 160px;
+  width: 300px;
 }
 
 .div-mae-order:hover {
@@ -18,8 +18,32 @@
 
 .div-filha-order {
   align-items: center;
-  display: flex;
   flex-flow: column wrap;
   justify-content: space-around;
-  width: 95%;
+  width: 100%;
+}
+
+.orderId, .orderStatus, .orderDate, .orderCardPrice {
+  display: grid;
+  text-align: center;
+}
+
+.orderId {
+  /* background-color: #ff9100; */
+  width: 100%;
+}
+
+.orderStatus {
+  /* background-color: #ff0000; */
+  width: 100%;
+}
+
+.orderDate {
+  /* background-color: #008500; */
+  width: 100%;
+}
+
+.orderCardPrice {
+  /* background-color: #1f0091; */
+  width: 100%;
 }

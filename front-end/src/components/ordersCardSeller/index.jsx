@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { getStorageOrder } from '../../helpers/localStorageOrderDdetails';
 import { getStorageUser } from '../../helpers/localStorage';
@@ -33,36 +35,39 @@ class OrdersCardSeller extends Component {
       orders,
     } = this.state;
     return (
-      <div>
+      <div className="div-mae-seller">
         {orders ? orders.map((ord) => (
           <Link to={ `/seller/orders/${ord.id}` } key={ ord.id }>
-            <div>
-              <p
-                data-testid={ `seller_orders__element-order-id-${ord.id}` }
-              >
-                {ord.id}
-              </p>
-              <p
-                data-testid={ `seller_orders__element-delivery-status-${ord.id}` }
-              >
-                {ord.status}
-              </p>
-              <p
-                data-testid={ `seller_orders__element-order-date-${ord.id}` }
-              >
-                {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
-              </p>
-              <p
-                data-testid={ `seller_orders__element-card-price-${ord.id}` }
-              >
-                {ord.total_price.toString().replace('.', ',')}
-              </p>
-              <p
-                data-testid={ `seller_orders__element-card-address-${ord.id}` }
-              >
-                {`${ord.delivery_address} ${ord.delivery_number}`}
-              </p>
-
+            <div className="div-mae-order">
+              <div>
+                <div>
+                  <p
+                    data-testid={ `seller_orders__element-order-id-${ord.id}` }
+                  >
+                    {ord.id}
+                  </p>
+                  <p
+                    data-testid={ `seller_orders__element-delivery-status-${ord.id}` }
+                  >
+                    {ord.status}
+                  </p>
+                  <p
+                    data-testid={ `seller_orders__element-order-date-${ord.id}` }
+                  >
+                    {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
+                  </p>
+                  <p
+                    data-testid={ `seller_orders__element-card-price-${ord.id}` }
+                  >
+                    {ord.total_price.toString().replace('.', ',')}
+                  </p>
+                  <p
+                    data-testid={ `seller_orders__element-card-address-${ord.id}` }
+                  >
+                    {`${ord.delivery_address} ${ord.delivery_number}`}
+                  </p>
+                </div>
+              </div>
             </div>
           </Link>
         )) : ''}

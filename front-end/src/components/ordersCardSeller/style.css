@@ -1,0 +1,20 @@
+.div-mae-seller {
+  margin: 10px;
+}
+
+.div-mae-order {
+  align-items: center;
+  border: 1px solid black;
+  display: inline-block;
+  flex-flow: column nowrap;
+  height: 160px;
+  justify-content: space-between;
+  margin: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+.div-mae-order:hover {
+  border: 5px solid;
+  border-color: #036b52;
+}
