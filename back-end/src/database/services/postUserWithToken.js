@@ -17,6 +17,8 @@ const createUserWithToken = async (user) => {
   if (error)
     sendError(StatusCodes.NOT_FOUND, "Some required fields are missing");
 
+    console.log('USER: ', user);
+
   const passHash = encryptPassword(user.password);
 
   const findName = await User.findOne({ where: { name: user.name } });
