@@ -1,4 +1,6 @@
 import React from 'react';
+import './style.css';
+
 import Header from '../../../components/header';
 import OrdersCardSeller from '../../../components/ordersCardSeller';
 import './style.css';

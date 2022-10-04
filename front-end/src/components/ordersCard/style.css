@@ -6,13 +6,6 @@
 .div-mae-order-component {
   align-content: space-around;
   align-items: center;
-  border-radius: 10px;
-  display: flex;
-  flex-flow: row nowrap;
-  height: 160px;
-  justify-content: space-between;
-  margin: 5px;
-  text-align: center;
   width: 700px;
 }
 

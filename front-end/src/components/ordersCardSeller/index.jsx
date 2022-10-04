@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import { Link } from 'react-router-dom';
 import { getStorageOrder } from '../../helpers/localStorageOrderDdetails';
 import { getStorageUser } from '../../helpers/localStorage';
@@ -74,7 +76,6 @@ class OrdersCardSeller extends Component {
                 >
                   {`${ord.delivery_address} ${ord.delivery_number}`}
                 </p>
-
               </div>
             </div>
           </Link>

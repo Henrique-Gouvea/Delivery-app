@@ -1,0 +1,21 @@
+.princ {
+  margin: 20px;
+}
+
+.cadAdm {
+  margin-bottom: 50px;
+}
+
+.label01 {
+  display: block;
+  margin-right: 30px;
+}
+
+.admCadastrar {
+  background-color: #056cf9;
+  color: white;
+  display: block;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  text-align: center;
+}

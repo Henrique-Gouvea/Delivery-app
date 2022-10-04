@@ -1,18 +1,61 @@
-.div-mae-order {
-  align-content: space-around;
-  align-items: center;
-
-  /* border: 2px solid red; */
-  border-radius: 10px;
-  display: flex;
-  flex-flow: row wrap;
-  height: 160px;
-  justify-content: space-between;
-  margin: 200px 5px;
-  text-align: center;
-  width: 700px;
+.div-principal-seller {
+  margin: 20px;
 }
 
-.detalhe {
-  border: 3px solid green;
+.sellerDetalhePedido {
+  margin-bottom: 20px;
+}
+
+.seller {
+  border: 1px solid red;
+  border-collapse: collapse;
+  font-family: Arial , Helvetica , sans-serif;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 50%;
+}
+
+.seller td, .seller th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.seller tr:nth-child( even ) {
+  background-color: #f2f2f2;
+}
+
+.seller tr:hover { background-color: #ddd;}
+
+.seller th {
+  background-color: #1da171;
+  color: white;
+  padding-bottom: 12px;
+  padding-top: 12px;
+  text-align: center;
+}
+
+.sellerPrepButton {
+  background-color: #056cf9;
+  color: white;
+  margin-bottom: 40px;
+}
+
+.sellerSaiuButton {
+  background-color: #e4af01;
+  color: black;
+  margin-bottom: 40px;
+}
+
+.valorTotalSeller {
+  background-color: #036b52;
+  border: 1px solid #ddd;
+  color: white;
+  position: fixed;
+  right: 20px;
+  text-align: center;
+  width: 282px;
+}
+
+.valorTotalNumSeller {
+  font-size: 20px;
 }
