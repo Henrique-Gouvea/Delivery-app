@@ -61,7 +61,7 @@ function Manage() {
     const emailUsers = allUsers.map((ele) => ele.email);
 
     if (emailUsers.includes(newUser.email)) {
-      setUserExist(true);
+      setUserExist(true); // elemento para usuário já existente
     }
 
     const resultado = await apiRequestUserGetAll();

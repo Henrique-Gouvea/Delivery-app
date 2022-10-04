@@ -31,10 +31,7 @@ const createUserWithToken = async (user) => {
     role: user.role || 'customer',
   });
 
-  // const token = createToken({ email: user.email, password: user.password });
-
   return {
-    // token,
     id: newUser.id,
     name: newUser.name,
     email: newUser.email,
