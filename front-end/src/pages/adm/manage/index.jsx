@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import './style.css';
+
 import Header from '../../../components/header';
 import TableManage from '../../../components/tableManage';
 import { apiRequestUserGetAll, apiRequestCadasterWithToken } from '../../../services/api';
@@ -86,50 +88,64 @@ function Manage() {
   return (
     <>
       <Header />
-      <h1>Cadastrar novo usuário</h1>
-      {
-        userExist && (
-          <p
-            data-testid="admin_manage__element-invalid-register"
-          >
-            Usuário já cadastrado!
-          </p>
-        )
-      }
-      <form>
-        <label htmlFor="name">
+      <div className="princ">
+        <h1 className="cadAdm">Cadastrar novo usuário</h1>
+        {
+          userExist && (
+            <p
+              data-testid="admin_manage__element-invalid-register"
+            >
+              Usuário já cadastrado!
+            </p>
+          )
+        }
+        {/* <form> */}
+        <label
+          htmlFor="name"
+        >
           Nome:
           <input
             id="name"
             name="name"
+            className="label01"
             value={ newUser.name }
             onChange={ ({ target }) => handleChange({ target }) }
             data-testid="admin_manage__input-name"
           />
         </label>
-        <label htmlFor="email">
+        <label
+          htmlFor="email"
+        >
           Email:
           <input
             id="email"
             name="email"
+            className="label01"
             value={ newUser.email }
             onChange={ ({ target }) => handleChange({ target }) }
             data-testid="admin_manage__input-email"
           />
         </label>
-        <label htmlFor="password">
+        <label
+          htmlFor="password"
+        >
           Password:
           <input
             id="password"
             name="password"
+            className="label01"
             value={ newUser.password }
             onChange={ ({ target }) => handleChange({ target }) }
             data-testid="admin_manage__input-password"
           />
         </label>
-        <label htmlFor="role">
+
+        <label
+          htmlFor="role"
+        >
           Tipo
           <select
+            className="label01"
             onChange={ ({ target }) => handleChange({ target }) }
             name="role"
             data-testid="admin_manage__select-role"
@@ -145,14 +161,17 @@ function Manage() {
         <button
           disabled={ !inputValid }
           type="button"
+          className="admCadastrar"
           data-testid="admin_manage__button-register"
           onClick={ () => handleClick() }
         >
           CADASTRAR
         </button>
-      </form>
-      <TableManage users={ allUsers } />
+        {/* </form> */}
+        <TableManage users={ allUsers } />
+      </div>
     </>
   );
 }
+
 export default Manage;
