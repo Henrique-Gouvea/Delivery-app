@@ -63,14 +63,14 @@ function Manage() {
     const emailUsers = allUsers.map((ele) => ele.email);
 
     if (emailUsers.includes(newUser.email)) {
-      setUserExist(true);
+      setUserExist(true); // elemento para usuário já existente
     }
 
     const resultado = await apiRequestUserGetAll();
     const usersDB = resultado.filter((elem) => elem.role !== 'administrator');
 
     if (emailUsers.includes(newUser.email)) {
-      setallUsers([...usersDB]);
+      setallUsers([...usersDB]); // não adiciona usuario já existente
     } else {
       setallUsers([...usersDB, newUser]);
     }

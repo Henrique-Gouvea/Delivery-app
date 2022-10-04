@@ -1,16 +1,154 @@
-.div-mae-seller {
-  align-items: center;
-  border: 1px solid black;
-  display: inline-block;
-  flex-flow: column nowrap;
-  height: 160px;
-  justify-content: space-between;
-  margin: 20px;
-  text-align: center;
-  width: 300px;
+@font-face {
+  font-family: Roboto;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 }
 
-.div-mae-seller:hover {
-  border: 5px solid;
-  border-color: #036b52;
+.div-mae-order-seller {
+  align-content: space-around;
+  align-items: center;
+
+  /* border: 3px solid red; */
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  height: 160px;
+  justify-content: space-between;
+  margin: 5px;
+  text-align: center;
+  width: 100%;
+}
+
+.div-filha-order-seller {
+  align-content: space-around;
+  align-items: center;
+  background: linear-gradient(0deg, #eaf1ef, #eaf1ef);
+  border: 1px solid rgba(177, 194, 190, 1);
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-flow: row wrap;
+  height: 150px;
+  justify-content: space-around;
+  margin: 10px;
+  width: max-content;
+}
+
+.div-filha-order-seller:hover {
+  border: 5px solid #036b52;
+}
+
+.pedido-seller, .order-id-seller {
+  align-items: center;
+  background: white;
+  border: 3px solid blueviolet;
+  color: #001813;
+  display: flex;
+  flex-flow: row nowrap;
+  font-family: Roboto , Arial , Helvetica , sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  height: 150px;
+  justify-content: center;
+  line-height: 42px;
+  margin: 1px 2.5px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.order-status-seller {
+  align-items: center;
+  border: 3px solid green;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 150px;
+  justify-content: center;
+  margin: 2.5px;
+  width: 290px;
+}
+
+.Pendente {
+  background: rgba(204, 184, 0, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
+}
+
+.Preparando {
+  background: rgba(102, 204, 0, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
+}
+
+.Entregue {
+  background: rgba(0, 204, 155, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
+}
+
+.date-price-seller {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 150px;
+  justify-content: center;
+  margin: 5px;
+  width: 265px;
+}
+
+.sale-date-seller {
+  align-items: center;
+  background-color: rgba(242, 255, 252, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  height: 70px;
+  justify-content: center;
+  margin: 2.5px auto;
+  text-align: center;
+  width: 265px;
+}
+
+.sale-price-seller {
+  align-items: center;
+  background-color: rgba(242, 255, 252, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  height: 70px;
+  justify-content: center;
+  margin: 2.5px auto;
+  text-transform: capitalize;
+  width: 265px;
+}
+
+.text-seller {
+  color: #001813;
+  font-family: Roboto , Arial , Helvetica , sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
 }

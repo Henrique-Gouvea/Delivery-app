@@ -1,3 +1,25 @@
-.sellerPedidos {
-  margin: 20px;
+.mae {
+  height: max-content;
+}
+
+.pageOrder-seller {
+  align-content: space-around;
+  align-items: center;
+  border: 10px solid green;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 100px auto;
+  width: 95%;
+}
+
+.divcardsOrder-seller {
+  align-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+
+  /* justify-content: space-evenly; */
+  margin-bottom: 2px;
+  width: 100%;
 }

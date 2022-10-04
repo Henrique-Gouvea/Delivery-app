@@ -1,48 +1,140 @@
-.div-mae-order {
-  align-items: center;
-  border: 1px solid black;
-  display: inline-block;
-  flex-flow: column nowrap;
-  height: 160px;
-  justify-content: space-between;
-  margin: 5px;
-  text-align: center;
-  width: 300px;
+@font-face {
+  font-family: Roboto;
+  src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 }
 
-.div-mae-order:hover {
-  border: 5px solid;
-  border-color: #036b52;
+.div-mae-order-component {
+  align-content: space-around;
+  align-items: center;
+  width: 700px;
 }
 
-.div-filha-order {
+.div-filha-order-component {
   align-items: center;
-  flex-flow: column wrap;
+  background: linear-gradient(0deg, #eaf1ef, #eaf1ef);
+  border: 1px solid rgba(177, 194, 190, 1);
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-flow: row nowrap;
   justify-content: space-around;
-  width: 100%;
+  margin: 10px;
 }
 
-.orderId, .orderStatus, .orderDate, .orderCardPrice {
-  display: grid;
+.div-filha-order-component:hover {
+  border: 5px solid #036b52;
+}
+
+.pedido-component, .order-id-component {
+  align-items: center;
+  background: white;
+  color: #001813;
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: Roboto , Arial , Helvetica , sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  height: 150px;
+  justify-content: center;
+  line-height: 42px;
+  margin: 1px 2.5px;
+  padding: 10px;
   text-align: center;
+  width: 200px;
 }
 
-/* .orderId {
-  background-color: #ff9100;
-  width: 100%;
+.order-status-component {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  height: 150px;
+  justify-content: center;
+  margin: 2.5px;
+  width: 290px;
 }
 
-.orderStatus {
-  background-color: #ff0000;
-  width: 100%;
+.Pendente {
+  background: rgba(204, 184, 0, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
 }
 
-.orderDate {
-  background-color: #008500;
-  width: 100%;
+.Preparando {
+  background: rgba(102, 204, 0, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
 }
 
-.orderCardPrice {
-  background-color: #1f0091;
-  width: 100%;
-} */
+.Entregue {
+  background: rgba(0, 204, 155, 0.75);
+  border-radius: 10px;
+  height: 150px;
+  margin: 0 2.5px;
+  width: 293px;
+}
+
+.date-price-component {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 150px;
+  justify-content: center;
+  margin: 5px;
+  width: 265px;
+}
+
+.sale-date-component {
+  align-items: center;
+  background-color: rgba(242, 255, 252, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  height: 70px;
+  justify-content: center;
+  margin: 2.5px auto;
+  text-align: center;
+  width: 265px;
+}
+
+.sale-price-component {
+  align-items: center;
+  background-color: rgba(242, 255, 252, 0.75);
+  display: flex;
+  flex-flow: row nowrap;
+  height: 70px;
+  justify-content: center;
+  margin: 2.5px auto;
+  text-transform: capitalize;
+  width: 265px;
+}
+
+.text-component {
+  color: #001813;
+  font-family: Roboto , Arial , Helvetica , sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 42px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:active {
+  text-decoration: underline;
+}
