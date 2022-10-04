@@ -9,8 +9,10 @@ function Orders() {
     <div>
       <Header />
       <div className="pageOrder">
-        <div className="divcardsOrder">
-          <OrdersCard />
+        <div>
+          <OrdersCard
+            className="divcardsOrder"
+          />
         </div>
       </div>
     </div>

@@ -28,34 +28,50 @@ class OrdersCard extends Component {
   };
 
   render() {
-    const {
-      orders,
-    } = this.state;
+    const { orders } = this.state;
+
     return (
-      <div className="div-mae-order">
+      <div className="div-mae-order-component">
         {orders ? orders.map((ord) => (
           <Link to={ `/customer/orders/${ord.id}` } key={ ord.id }>
-            <div className="div-filha-order">
-              <p
-                data-testid={ `customer_orders__element-order-id-${ord.id}` }
+            <div className="div-filha-order-component">
+
+              <div className="pedido-component">
+                Pedido
+
+                <div
+                  className="order-id-component"
+                  data-testid={ `customer_orders__element-order-id-${ord.id}` }
+                >
+                  {ord.id}
+
+                </div>
+
+              </div>
+              <div
+                className={ `${ord.status}` }
               >
-                {ord.id}
-              </p>
-              <p
-                data-testid={ `customer_orders__element-delivery-status-${ord.id}` }
-              >
-                {ord.status}
-              </p>
-              <p
-                data-testid={ `customer_orders__element-order-date-${ord.id}` }
-              >
-                {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
-              </p>
-              <p
-                data-testid={ `customer_orders__element-card-price-${ord.id}` }
-              >
-                {ord.total_price.toString().replace('.', ',')}
-              </p>
+                <div
+                  className="order-status-component text-component"
+                  data-testid={ `customer_orders__element-delivery-status-${ord.id}` }
+                >
+                  {ord.status}
+                </div>
+              </div>
+              <div className="date-price-component">
+                <div
+                  className="sale-date-component text-component"
+                  data-testid={ `customer_orders__element-order-date-${ord.id}` }
+                >
+                  {ord.sale_date ? this.convertDate(ord.sale_date) : ''}
+                </div>
+                <div
+                  className="sale-price-component text-component"
+                  data-testid={ `customer_orders__element-card-price-${ord.id}` }
+                >
+                  {ord.total_price.toString().replace('.', ',')}
+                </div>
+              </div>
             </div>
           </Link>
         )) : ''}

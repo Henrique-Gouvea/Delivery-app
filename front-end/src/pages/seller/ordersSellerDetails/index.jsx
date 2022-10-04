@@ -3,7 +3,9 @@ import Header from '../../../components/header';
 import TableOrdersSeller from '../../../components/tableOrdersSeller';
 import {
   getStorageOrder,
-  saveStorageOrder } from '../../../helpers/localStorageOrderDdetails';
+  saveStorageOrder,
+} from '../../../helpers/localStorageOrderDdetails';
+import './style.css';
 
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
@@ -64,9 +66,9 @@ class OrdersSellerDetails extends Component {
       orderDetails,
     } = this.state;
     return (
-      <div>
+      <div className="div-mae-order">
         <Header />
-        <h2>Detalhe do pedido</h2>
+        <h2 className="detalhe">Detalhe do pedido</h2>
         <div>
           <p
             data-testid="seller_order_details__element-order-details-label-order-id"
