@@ -1,0 +1,18 @@
+.div-mae-order {
+  align-content: space-around;
+  align-items: center;
+
+  /* border: 2px solid red; */
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  height: 160px;
+  justify-content: space-between;
+  margin: 200px 5px;
+  text-align: center;
+  width: 700px;
+}
+
+.detalhe {
+  border: 3px solid green;
+}

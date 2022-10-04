@@ -3,41 +3,47 @@
   src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 }
 
-.div-mae-order-component {
+.div-mae-order-seller {
   align-content: space-around;
   align-items: center;
+
+  /* border: 3px solid red; */
   border-radius: 10px;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   height: 160px;
   justify-content: space-between;
   margin: 5px;
   text-align: center;
-  width: 700px;
+  width: 100%;
 }
 
-.div-filha-order-component {
+.div-filha-order-seller {
+  align-content: space-around;
   align-items: center;
   background: linear-gradient(0deg, #eaf1ef, #eaf1ef);
   border: 1px solid rgba(177, 194, 190, 1);
   border-radius: 10px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
+  height: 150px;
   justify-content: space-around;
   margin: 10px;
+  width: max-content;
 }
 
-.div-filha-order-component:hover {
+.div-filha-order-seller:hover {
   border: 5px solid #036b52;
 }
 
-.pedido-component, .order-id-component {
+.pedido-seller, .order-id-seller {
   align-items: center;
   background: white;
+  border: 3px solid blueviolet;
   color: #001813;
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   font-family: Roboto , Arial , Helvetica , sans-serif;
   font-size: 36px;
   font-style: normal;
@@ -51,8 +57,9 @@
   width: 200px;
 }
 
-.order-status-component {
+.order-status-seller {
   align-items: center;
+  border: 3px solid green;
   border-radius: 10px;
   display: flex;
   flex-flow: row nowrap;
@@ -86,7 +93,7 @@
   width: 293px;
 }
 
-.date-price-component {
+.date-price-seller {
   display: flex;
   flex-flow: column nowrap;
   height: 150px;
@@ -95,7 +102,7 @@
   width: 265px;
 }
 
-.sale-date-component {
+.sale-date-seller {
   align-items: center;
   background-color: rgba(242, 255, 252, 0.75);
   display: flex;
@@ -107,7 +114,7 @@
   width: 265px;
 }
 
-.sale-price-component {
+.sale-price-seller {
   align-items: center;
   background-color: rgba(242, 255, 252, 0.75);
   display: flex;
@@ -119,7 +126,7 @@
   width: 265px;
 }
 
-.text-component {
+.text-seller {
   color: #001813;
   font-family: Roboto , Arial , Helvetica , sans-serif;
   font-size: 36px;
