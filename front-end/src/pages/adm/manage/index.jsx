@@ -68,7 +68,7 @@ function Manage() {
     const usersDB = resultado.filter((elem) => elem.role !== 'administrator');
 
     if (emailUsers.includes(newUser.email)) {
-      setallUsers([...usersDB]);
+      setallUsers([...usersDB]); // não adiciona usuario já existente
     } else {
       setallUsers([...usersDB, newUser]);
     }
