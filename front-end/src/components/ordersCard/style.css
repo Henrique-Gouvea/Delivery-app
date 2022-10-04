@@ -1,7 +1,6 @@
 .div-mae-order {
   align-items: center;
   border: 1px solid black;
-
   display: inline-block;
   flex-flow: column nowrap;
   height: 160px;

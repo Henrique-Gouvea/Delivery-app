@@ -11,7 +11,6 @@ const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
 const dataTstID = 'seller_order_details__element-order-details-label-delivery-status';
 const sellerId = 'seller_order_details__element-order-details-label-order-id';
-// const sellerName = 'customer_order_details__element-order-details-label-seller-name';
 const orderDate = 'seller_order_details__element-order-details-label-order-date';
 // function OrdersDetails() {
 class OrdersSellerDetails extends Component {
@@ -71,55 +70,64 @@ class OrdersSellerDetails extends Component {
     return (
       <div>
         <Header />
-        <h2>Detalhe do pedido</h2>
-        <table className="user">
-          <thead>
-            <th>id</th>
-            <th>Vendedor</th>
-            <th>Data</th>
-            <th>Status</th>
-          </thead>
-          <tbody>
-            <td data-testid={ sellerId }>{orderDetails.id}</td>
-            <td>{orderDetails.seller_name}</td>
-            <td
-              data-testid={ orderDate }
+        <div className="div-principal-seller">
+          <h2 className="sellerDetalhePedido">Detalhe do pedido</h2>
+          <table className="seller">
+            <thead>
+              <th>id</th>
+              <th>Vendedor</th>
+              <th>Data</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+              <td data-testid={ sellerId }>{orderDetails.id}</td>
+              <td>{orderDetails.seller_name}</td>
+              <td
+                data-testid={ orderDate }
+              >
+                {orderDetails.sale_date
+                  ? this.convertDate(orderDetails.sale_date) : ''}
+              </td>
+              <td data-testid={ dataTstID }>{orderDetails.status}</td>
+            </tbody>
+          </table>
+          <div className="div-principal-seller">
+            <button
+              className="sellerPrepButton"
+              data-testid="seller_order_details__button-preparing-check"
+              type="button"
+              id={ orderDetails.id }
+              onClick={ this.btnDeliveryCheck }
+              name="Preparando"
+              disabled={ orderDetails.status !== 'Pendente' }
             >
-              {orderDetails.sale_date
-                ? this.convertDate(orderDetails.sale_date) : ''}
-            </td>
-            <td data-testid={ dataTstID }>{orderDetails.status}</td>
-          </tbody>
-        </table>
-        <div className="div-principal">
-          <button
-            data-testid="seller_order_details__button-preparing-check"
-            type="button"
-            id={ orderDetails.id }
-            onClick={ this.btnDeliveryCheck }
-            name="Preparando"
-            disabled={ orderDetails.status !== 'Pendente' }
-          >
-            Preparar Pedido
-          </button>
-          <button
-            data-testid="seller_order_details__button-dispatch-check"
-            type="button"
-            id={ orderDetails.id }
-            onClick={ this.btnDeliveryCheck }
-            disabled={ orderDetails.status !== 'Preparando' }
-            name="Em Trânsito"
-          >
-            Saiu para entrega
-          </button>
-        </div>
-        <div>
-          <TableOrdersSeller products={ orderDetails.products } />
-          <p
-            data-testid="seller_order_details__element-order-total-price"
-          >
-            {orderDetails.total ? orderDetails.total.toString().replace('.', ',') : ''}
-          </p>
+              Preparar Pedido
+            </button>
+            <button
+              className="sellerSaiuButton"
+              data-testid="seller_order_details__button-dispatch-check"
+              type="button"
+              id={ orderDetails.id }
+              onClick={ this.btnDeliveryCheck }
+              disabled={ orderDetails.status !== 'Preparando' }
+              name="Em Trânsito"
+            >
+              Saiu para entrega
+            </button>
+          </div>
+          <div>
+            <TableOrdersSeller products={ orderDetails.products } />
+            <div className="valorTotalSeller">
+              <div>Valor Total: R$</div>
+              <div
+                className="valorTotalNumSeller"
+                data-testid="seller_order_details__element-order-total-price"
+              >
+                {orderDetails.total
+                  ? orderDetails.total.toString().replace('.', ',') : ''}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
