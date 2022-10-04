@@ -8,7 +8,6 @@ const salesRoutes = require('../database/routes/salesRoutes');
 const authToken = require('../database/middlewares/authToken');
 const postUserWithToken = require('../database/routes/postUserWithToken');
 
-
 const app = express();
 app.use(express.json());
 

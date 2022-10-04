@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
     },
-    { timestamps: false, tableName: "salesProducts" }
+    { timestamps: false, tableName: "sales_products" }
   );
 
   SalesProduct.associate = (models) => {

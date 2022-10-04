@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
 
-function TableOrders() {
-  const index = '3';
+function TableOrders({ products }) {
   return (
-    <table>
+    <table className="tableOrders">
       <thead>
         <tr>
           <th>Item</th>
@@ -14,47 +15,55 @@ function TableOrders() {
         </tr>
       </thead>
       <tbody>
-        {/* {products?.map((plan) => ( */}
-        <tr key={ index }>
-          <td
-            data-testid={
-              `customer_order_details__element-order-table-item-number-${index}`
-            }
-          >
-            Index-Item-Numero
-          </td>
-          <td
-            data-testid={
-              `customer_order_details__element-order-table-name-${index}`
-            }
-          >
-            Nome Produto
-          </td>
-          <td
-            data-testid={
-              `customer_order_details__element-order-table-quantity-${index}`
-            }
-          >
-            Quantidade
-          </td>
-          <td
-            data-testid={
-              `customer_order_details__element-order-table-unit-price-${index}`
-            }
-          >
-            Preço unitario
-          </td>
-          <td
-            data-testid={
-              `customer_order_details__element-order-table-sub-total-${index}`
-            }
-          >
-            SubTotal
-          </td>
-        </tr>
-        {/* ))} */}
+        {products?.map((prod, index) => (
+          <tr key={ index }>
+            <td
+              data-testid={
+                `customer_order_details__element-order-table-item-number-${index}`
+              }
+            >
+              {index}
+            </td>
+            <td
+              data-testid={
+                `customer_order_details__element-order-table-name-${index}`
+              }
+            >
+              {prod.name}
+            </td>
+            <td
+              className="quantidade"
+              data-testid={
+                `customer_order_details__element-order-table-quantity-${index}`
+              }
+            >
+              {prod.quantity}
+            </td>
+            <td
+              className="valorUnit"
+              data-testid={
+                `customer_order_details__element-order-table-unit-price-${index}`
+              }
+            >
+              {prod.price.toString().replace('.', ',')}
+            </td>
+            <td
+              className="subTotal"
+              data-testid={
+                `customer_order_details__element-order-table-sub-total-${index}`
+              }
+            >
+              {(prod.price * prod.quantity).toString().replace('.', ',')}
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 }
+
+TableOrders.propTypes = {
+  products: PropTypes.object,
+}.isRequired;
+
 export default TableOrders;

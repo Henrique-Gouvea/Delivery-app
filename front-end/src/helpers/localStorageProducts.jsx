@@ -32,3 +32,7 @@ export function getCartTotal() {
   }
   return total.toFixed(2);
 }
+
+export function removeProducts() {
+  localStorage.removeItem('products');
+}

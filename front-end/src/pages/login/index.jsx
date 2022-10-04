@@ -5,7 +5,7 @@ import './style.css';
 import CadasterContext from '../../context/CadasterContext';
 import { apiRequestLogin } from '../../services/api';
 import validationEmail from '../../helpers/validationEmail';
-import { saveStorageUser } from '../../helpers/localStorage';
+import { saveStorageUser, getStorageUser } from '../../helpers/localStorage';
 
 function Login() {
   const [btnDisabledLogin, setBtnDisabledLogin] = useState(true);
@@ -50,6 +50,11 @@ function Login() {
       navigate('/admin/manage');
     } else setErrorLogin(user.message);
   };
+
+  useEffect(() => {
+    const user = getStorageUser();
+    if (user && user.token) logicalNavigate(user);
+  }, []);
 
   const clickSubmitLogin = async (event) => {
     event.preventDefault();

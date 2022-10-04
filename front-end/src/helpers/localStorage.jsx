@@ -8,5 +8,6 @@ export function getStorageUser() {
 }
 
 export function clearStorageUser() {
-  localStorage.clear();
+  localStorage.removeItem('user');
+  console.log('saiu');
 }

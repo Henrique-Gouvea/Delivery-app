@@ -46,14 +46,14 @@ export const apiRequestUserGetAll = async () => (
 export const apiRequestProductsGetAll = async (token) => (
   request('/products', 'get', token));
 
-export const apiRequestSalesGetAll = async (body, token) => (
-  requestPostToken('/sales', 'get', body, token));
+export const apiRequestSalesGetAll = async (token) => (
+  request('/sales', 'get', token));
 
 export const apiRequestSalesGetById = async (token) => (
   request(salesId, 'get', token));
 
-export const apiRequestSalesPost = async (token) => (
-  request('/sales', 'post', token));
+export const apiRequestSalesPost = async (body, token) => (
+  requestPostToken('/sales', 'post', body, token));
 
 export const apiRequestSalesUpdate = async (token) => (
   request(salesId, 'put', token));
