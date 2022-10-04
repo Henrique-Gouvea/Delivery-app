@@ -35,10 +35,10 @@ class OrdersCardSeller extends Component {
       orders,
     } = this.state;
     return (
-      <div className="div-mae-seller">
+      <div>
         {orders ? orders.map((ord) => (
           <Link to={ `/seller/orders/${ord.id}` } key={ ord.id }>
-            <div className="div-mae-order">
+            <div className="div-mae-seller">
               <div>
                 <div>
                   <p

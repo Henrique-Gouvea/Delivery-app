@@ -2,7 +2,7 @@
   margin: 10px;
 }
 
-.div-mae-order {
+.div-mae-seller {
   align-items: center;
   border: 1px solid black;
   display: inline-block;
@@ -14,7 +14,7 @@
   width: 300px;
 }
 
-.div-mae-order:hover {
+.div-mae-seller:hover {
   border: 5px solid;
   border-color: #036b52;
 }

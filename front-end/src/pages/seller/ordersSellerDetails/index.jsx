@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './style.css';
+
 import Header from '../../../components/header';
 import TableOrdersSeller from '../../../components/tableOrdersSeller';
 import {
@@ -8,6 +10,9 @@ import {
 const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
 const dataTstID = 'seller_order_details__element-order-details-label-delivery-status';
+const sellerId = 'seller_order_details__element-order-details-label-order-id';
+const sellerName = 'customer_order_details__element-order-details-label-seller-name';
+const orderDate = 'seller_order_details__element-order-details-label-order-date';
 // function OrdersDetails() {
 class OrdersSellerDetails extends Component {
   constructor(props) {
@@ -67,8 +72,27 @@ class OrdersSellerDetails extends Component {
       <div>
         <Header />
         <h2>Detalhe do pedido</h2>
-        <div>
-          <p
+        <table className="user">
+          <thead>
+            <th>id</th>
+            <th>Vendedor</th>
+            <th>Data</th>
+            <th>Status</th>
+          </thead>
+          <tbody>
+            <td data-testid={ sellerId }>{orderDetails.id}</td>
+            <td data-testid={ sellerName }>{orderDetails.seller_name}</td>
+            <td
+              data-testid={ orderDate }
+            >
+              {orderDetails.sale_date
+                ? this.convertDate(orderDetails.sale_date) : ''}
+            </td>
+            <td data-testid={ dataTstID }>{orderDetails.status}</td>
+          </tbody>
+        </table>
+        <div className="div-principal">
+          {/* <p
             data-testid="seller_order_details__element-order-details-label-order-id"
           >
             {orderDetails.id}
@@ -82,7 +106,7 @@ class OrdersSellerDetails extends Component {
             data-testid={ dataTstID }
           >
             {orderDetails.status}
-          </p>
+          </p> */}
           <button
             data-testid="seller_order_details__button-preparing-check"
             type="button"
