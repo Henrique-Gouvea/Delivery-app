@@ -1,7 +1,7 @@
 .div-mae-order {
   align-items: center;
   border: 1px solid black;
-  /* border-radius: 10px; */
+
   display: inline-block;
   flex-flow: column nowrap;
   height: 160px;
@@ -28,22 +28,22 @@
   text-align: center;
 }
 
-.orderId {
-  /* background-color: #ff9100; */
+/* .orderId {
+  background-color: #ff9100;
   width: 100%;
 }
 
 .orderStatus {
-  /* background-color: #ff0000; */
+  background-color: #ff0000;
   width: 100%;
 }
 
 .orderDate {
-  /* background-color: #008500; */
+  background-color: #008500;
   width: 100%;
 }
 
 .orderCardPrice {
-  /* background-color: #1f0091; */
+  background-color: #1f0091;
   width: 100%;
-}
+} */

@@ -11,7 +11,7 @@ const COMPARE_ONE = 1;
 const COMPARE_ONE_NEGATIVE = -1;
 const dataTstID = 'seller_order_details__element-order-details-label-delivery-status';
 const sellerId = 'seller_order_details__element-order-details-label-order-id';
-const sellerName = 'customer_order_details__element-order-details-label-seller-name';
+// const sellerName = 'customer_order_details__element-order-details-label-seller-name';
 const orderDate = 'seller_order_details__element-order-details-label-order-date';
 // function OrdersDetails() {
 class OrdersSellerDetails extends Component {
@@ -81,7 +81,7 @@ class OrdersSellerDetails extends Component {
           </thead>
           <tbody>
             <td data-testid={ sellerId }>{orderDetails.id}</td>
-            <td data-testid={ sellerName }>{orderDetails.seller_name}</td>
+            <td>{orderDetails.seller_name}</td>
             <td
               data-testid={ orderDate }
             >
@@ -92,21 +92,6 @@ class OrdersSellerDetails extends Component {
           </tbody>
         </table>
         <div className="div-principal">
-          {/* <p
-            data-testid="seller_order_details__element-order-details-label-order-id"
-          >
-            {orderDetails.id}
-          </p>
-          <p
-            data-testid="seller_order_details__element-order-details-label-order-date"
-          >
-            {orderDetails.sale_date ? this.convertDate(orderDetails.sale_date) : ''}
-          </p>
-          <p
-            data-testid={ dataTstID }
-          >
-            {orderDetails.status}
-          </p> */}
           <button
             data-testid="seller_order_details__button-preparing-check"
             type="button"
